@@ -59,69 +59,64 @@
 
 ## 三、DTD
 
-1. 概念
+### 1、概念
 
-```
-DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。它使用一系列的合法元素来定义文档结构。通过 DTD 验证的 XML 是“合法”的 XML
-```
+​	DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。它使用一系列的合法元素来定义文档结构。通过 DTD 验证的 XML 是“合法”的 XML
 
-1. 优点
+### 2、优点
 
-```
-1.通过 DTD，每一个 XML 文件均可携带一个有关其自身格式的描述。
-2.通过 DTD，独立的团体可一致地使用某个标准的 DTD 来交换数据。
-3.应用程序也可使用某个标准的 DTD 来验证从外部接收到的数据。
-4.还可以使用 DTD 来验证您自身的数据。
-```
+1. 通过 DTD，每一个 XML 文件均可携带一个有关其自身格式的描述。
+2. 通过 DTD，独立的团体可一致地使用某个标准的 DTD 来交换数据。
+3. 应用程序也可使用某个标准的 DTD 来验证从外部接收到的数据。
+4. 还可以使用 DTD 来验证您自身的数据。
 
-1. 使用
+### 3、使用
 
-   1. DTD可被成行的声明在XML文档中，也可作为一个外部引用
+1. DTD可被成行的声明在XML文档中，也可作为一个外部引用
 
-   2. DTD包含在XML源文件中，它应当通过下面的语法（<!DOCTYPE 根元素 [元素声明]>）包装在一个 DOCTYPE 声明中
+2. DTD包含在XML源文件中，它应当通过下面的语法（<!DOCTYPE 根元素 [元素声明]>）包装在一个 DOCTYPE 声明中
 
-      ```
-      <!DOCTYPE person [
-        <!ELEMENT person (id,name)>
-        <!ELEMENT id      (#PCDATA)>
-        <!ELEMENT name    (#PCDATA)>
-      ]>
+   ```
+   <!DOCTYPE person [
+     <!ELEMENT person (id,name)>
+     <!ELEMENT id      (#PCDATA)>
+     <!ELEMENT name    (#PCDATA)>
+   ]>
 
-      <person>
-      <id>1</id>
-      <name>小明</name>
-      </person>
-      ```
+   <person>
+   <id>1</id>
+   <name>小明</name>
+   </person>
+   ```
 
-   3. 外部文档声明，DTD在XML文档的外部这里关键是通过<!DOCTYPE person
+3. 外部文档声明，DTD在XML文档的外部这里关键是通过<!DOCTYPE person
 
-   4. SYSTEM "xx.dtd">引用“.dtd"文件
+4. SYSTEM "xx.dtd">引用“.dtd"文件
 
-      1. person.dtd文件
+   - person.dtd文件
 
-         ```
-         <!DOCTYPE person [
-           <!ELEMENT person (id,name)>
-           <!ELEMENT id      (#PCDATA)>
-           <!ELEMENT name    (#PCDATA)>
-           <!ELEMENT age    (#PCDATA)>
-           <!ELEMENT phone    (#PCDATA)>
-         ]>
-         ```
+     ```
+     <!DOCTYPE person [
+       <!ELEMENT person (id,name)>
+       <!ELEMENT id      (#PCDATA)>
+       <!ELEMENT name    (#PCDATA)>
+       <!ELEMENT age    (#PCDATA)>
+       <!ELEMENT phone    (#PCDATA)>
+     ]>
+     ```
 
-      2. .xml文件
 
-         ```
-         <!DOCTYPE person SYSTEM "person.dtd">
-         <person>
-             <id></id>
-             <username></username>
-             <age></age>
-             <phone></phone>
-         </person>
-         ```
+   - xml文件
 
-   ​
+     ```
+     <!DOCTYPE person SYSTEM "person.dtd">
+     <person>
+         <id></id>
+         <username></username>
+         <age></age>
+         <phone></phone>
+     </person>
+     ```
 
 ## 四 、XML Schema
 
