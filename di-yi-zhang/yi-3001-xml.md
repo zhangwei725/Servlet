@@ -16,11 +16,11 @@
 
 ![](http://opzv089nq.bkt.clouddn.com/17-8-25/35293271.jpg)
 
-## 二	XML​
+## 二    XML​
 
 ### 1、定义
 
-​	可扩展标记语言（EXtensible Markup Language），是一种标记语言，很类似 HTML。XML 的设计宗旨是传输数据，而非显示数据。XML 标签没有被预定义，需要自行定义标签。XML 是 W3C 的推荐标准。XML先驱是SGML（SGML，通用标识语言标准（Standard Generalized Markup Language)），
+​    可扩展标记语言（EXtensible Markup Language），是一种标记语言，很类似 HTML。XML 的设计宗旨是传输数据，而非显示数据。XML 标签没有被预定义，需要自行定义标签。XML 是 W3C 的推荐标准。XML先驱是SGML（SGML，通用标识语言标准（Standard Generalized Markup Language\)），
 
 ### 2、XML和HTML的差异
 
@@ -35,18 +35,18 @@
 2. 必须有关闭标签，
 3. 标签对大小写敏感，
 4. 元素必须被正确的嵌套，
-5. 属性的值必须加引号	
+5. 属性的值必须加引号    
 
 ### 4、示例代码
 
 ```
-<?xml version="1.0" encoding="utf-8"?>	   
+<?xml version="1.0" encoding="utf-8"?>       
 <!--XML声明,注意默认编码的选择-->
-<person>	                                   
+<person>                                       
 <!--根元素（结束标签）-->
-	<id>1</id>        <!--元素-->
-	<name></name>     <!--元素-->                  
-</person>		
+    <id>1</id>        <!--元素-->
+    <name></name>     <!--元素-->                  
+</person>
 ```
 
 ### 5、XML 命名规则
@@ -61,7 +61,7 @@
 
 ### 1、概念
 
-​	DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。它使用一系列的合法元素来定义文档结构。通过 DTD 验证的 XML 是“合法”的 XML
+​    DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。它使用一系列的合法元素来定义文档结构。通过 DTD 验证的 XML 是“合法”的 XML
 
 ### 2、优点
 
@@ -74,7 +74,7 @@
 
 1. DTD可被成行的声明在XML文档中，也可作为一个外部引用
 
-2. DTD包含在XML源文件中，它应当通过下面的语法（<!DOCTYPE 根元素 [元素声明]>）包装在一个 DOCTYPE 声明中
+2. DTD包含在XML源文件中，它应当通过下面的语法（&lt;!DOCTYPE 根元素 \[元素声明\]&gt;）包装在一个 DOCTYPE 声明中
 
    ```
    <!DOCTYPE person [
@@ -89,11 +89,11 @@
    </person>
    ```
 
-3. 外部文档声明，DTD在XML文档的外部这里关键是通过<!DOCTYPE person
+3. 外部文档声明，DTD在XML文档的外部这里关键是通过&lt;!DOCTYPE person
 
-4. SYSTEM "xx.dtd">引用“.dtd"文件
+4. SYSTEM "xx.dtd"&gt;引用“.dtd"文件
 
-   - person.dtd文件
+   * person.dtd文件
 
      ```
      <!DOCTYPE person [
@@ -105,24 +105,23 @@
      ]>
      ```
 
+* xml文件
 
-   - xml文件
-
-     ```
-     <!DOCTYPE person SYSTEM "person.dtd">
-     <person>
-         <id></id>
-         <username></username>
-         <age></age>
-         <phone></phone>
-     </person>
-     ```
+  ```
+  <!DOCTYPE person SYSTEM "person.dtd">
+  <person>
+      <id></id>
+      <username></username>
+      <age></age>
+      <phone></phone>
+  </person>
+  ```
 
 ## 四 、XML Schema
 
-### 1、概念    
+### 1、概念
 
-​	 XML Schema(XML Schema Definition，XSD) 语言也称作 XML Schema 定义，作用是定义 XML 文档的合法构建模块，类似 DTD，它是DTE的继承者，它比DTD更强大，而且很有可能在网络应用程序中取代DTD。
+​     XML Schema\(XML Schema Definition，XSD\) 语言也称作 XML Schema 定义，作用是定义 XML 文档的合法构建模块，类似 DTD，它是DTE的继承者，它比DTD更强大，而且很有可能在网络应用程序中取代DTD。
 
 ### 2、与DTD相比优势
 
@@ -134,32 +133,32 @@
 
 ### 3、作用
 
-​	XML 文档的合法构建模块，类似 DTD。定义可出现在文档中的元素+属性（及数据类型、默认值、固定值、文本）、子元素（次序、数目）
+​    XML 文档的合法构建模块，类似 DTD。定义可出现在文档中的元素+属性（及数据类型、默认值、固定值、文本）、子元素（次序、数目）
 
 ## 五、xml解析
 
 #### 1、说明:
 
-​	所谓的解析就是获取xml获取节点下的值
+​    所谓的解析就是获取xml获取节点下的值
 
 #### 2、常用的有四种解析方式
 
 1. DOM解析
-2. DOM4J解析 http://dom4j.sourceforge.NET/ 
+2. DOM4J解析 [http://dom4j.sourceforge.NET/](http://dom4j.sourceforge.NET/) 
 3. SAX解析
-4. JDOM解析 http://www.jdom.org
+4. JDOM解析 [http://www.jdom.org](http://www.jdom.org)
 
 ## 六、DOM解析详解
 
 ### 1、说明
 
-​	DOM是用与平台和语言无关的方式表示XML文档的官方W3C标准。DOM是以层次结构组织的节点或信息片断的集合。这个层次结构允许开发人员在树中寻找特定信息。分析该结构通常需要加载整个文档和构造层次结构，然后才能做任何工作。由于它是基于信息层次的，因而DOM被认为是基于树或基于对象的。DOM以及广义的基于树的处理具有几个优点。首先，由于树在内存中是持久的，因此可以修改它以便应用程序能对数据和结构作出更改。它还可以在任何时候在树中上下导航，而不是像SAX那样是一次性的处理。DOM使用起来也要简单得多
+​    DOM是用与平台和语言无关的方式表示XML文档的官方W3C标准。DOM是以层次结构组织的节点或信息片断的集合。这个层次结构允许开发人员在树中寻找特定信息。分析该结构通常需要加载整个文档和构造层次结构，然后才能做任何工作。由于它是基于信息层次的，因而DOM被认为是基于树或基于对象的。DOM以及广义的基于树的处理具有几个优点。首先，由于树在内存中是持久的，因此可以修改它以便应用程序能对数据和结构作出更改。它还可以在任何时候在树中上下导航，而不是像SAX那样是一次性的处理。DOM使用起来也要简单得多
 
 ### 2、基本使用
 
 #### 1、概要
 
-​	dom操作XML会比较简单，就是将XML看做是一颗树，DOM就是对这颗树的一个数据结构的描述，但对大型XML文件效果可能会不理想
+​    dom操作XML会比较简单，就是将XML看做是一颗树，DOM就是对这颗树的一个数据结构的描述，但对大型XML文件效果可能会不理想
 
 #### 2、操作步骤
 
@@ -168,7 +167,6 @@
    ```
    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
    ```
-
 2. 实例化解析器
 
    ```
@@ -230,7 +228,7 @@
    for (int i = 0; i < childNodes.getLength(); i++) {
                    Node item = childNodes.item(i);
                    if (item.getNodeType() == Node.ELEMENT_NODE && item.getNodeName().equals("pid")) {
-   		     String pid = item.getFirstChild().getNodeValue();
+                String pid = item.getFirstChild().getNodeValue();
                      ...
                    }
    ```
@@ -249,22 +247,22 @@
 #### 2.1、接口的继承关系
 
 ```
-interface org.dom4j.Node (	
+interface org.dom4j.Node (    
 为dom4j中所有的XML节点定义了多态行为)
 
-	|interface org.dom4j.Attribute 	(定义了 XML 的属性)
+    |interface org.dom4j.Attribute     (定义了 XML 的属性)
 
-	|interface org.dom4j.Branch(指能够包含子节点的节点。如XML元素(Element)和文档(Docuemnts)定义了一个公共的行为)
+    |interface org.dom4j.Branch(指能够包含子节点的节点。如XML元素(Element)和文档(Docuemnts)定义了一个公共的行为)
 
-		| interface org.dom4j.Document (	
+        | interface org.dom4j.Document (    
 定义了XML 文档)
-		|interface org.dom4j.Element (定义XML 元素)
-	
-	| interface org.dom4j.CharacterData (是一个标识接口，标识基于字符的节点。如CDATA，Comment, Text)
-		|interface org.dom4j.CDATA (	
+        |interface org.dom4j.Element (定义XML 元素)
+
+    | interface org.dom4j.CharacterData (是一个标识接口，标识基于字符的节点。如CDATA，Comment, Text)
+        |interface org.dom4j.CDATA (    
 定义了 XML CDATA 区域)
-		|interface org.dom4j.Comment (定义了 XML 注释的行为)
- 		|interface org.dom4j.Text (	
+        |interface org.dom4j.Comment (定义了 XML 注释的行为)
+         |interface org.dom4j.Text (    
 定义 XML 文本节点)
 ```
 
@@ -272,10 +270,10 @@ interface org.dom4j.Node (
 
 ```
 1> class org.dom4j.io.SAXReader
-	read  提供多种读取xml文件的方式，返回一个Domcument对象
+    read  提供多种读取xml文件的方式，返回一个Domcument对象
 2> interface org.dom4j.Document
-	iterator  使用此法获取node
-	getRootElement  获取根节点
+    iterator  使用此法获取node
+    getRootElement  获取根节点
 3> interface org.dom4j.Node
     getName  获取node名字，例如获取根节点名称为
     getNodeType  获取node类型常量值，
@@ -290,11 +288,11 @@ interface org.dom4j.Node (
     getValue  获取属性值
 
 6> interface org.dom4j.Text
-	getText  获取Text节点值
+    getText  获取Text节点值
 7> interface org.dom4j.CDATA
-	getText  获取CDATA Section值
+    getText  获取CDATA Section值
 8> interface org.dom4j.Comment
-	getText  获取注释 
+    getText  获取注释
 ```
 
 #### 2.3、Document对象相关
@@ -326,7 +324,7 @@ String text=root.elementText("pid");这个是取得根节点下的name字节点�
     for (Element element : elements) {
     }
 例2 List<Element> elements = root.elements("address");
-    for (Element addElements : elements) {		
+    for (Element addElements : elements) {        
     }
 ```
 
@@ -334,7 +332,7 @@ String text=root.elementText("pid");这个是取得根节点下的name字节点�
 
 ```
 1.取得某节点下的某属性
-Element root=document.getRootElement();    
+Element root=document.getRootElement();    
 Attribute idAttr=root.attribute("id");// 属性名name
 
 2.取得属性的值
@@ -351,24 +349,24 @@ Attribute idAttr=root.attribute("id");// 属性名name
 
 #### 2.6、Element类
 
-| getQName()           | 元素的QName对象                               |
-| -------------------- | ---------------------------------------- |
-| getNamespace()       | 元素所属的Namespace对象                         |
-| getNamespacePrefix() | 元素所属的Namespace对象的prefix                  |
-| getNamespaceURI()    | 元素所属的Namespace对象的URI                     |
-| getName()            | 元素的local name                            |
-| getQualifiedName()   | 元素的qualified name                        |
-| getText()            | 元素所含有的text内容，如果内容为空则返回一个空字符串而不是null      |
-| getTextTrim()        | 元素所含有的text内容，其中连续的空格被转化为单个空格，该方法不会返回null |
-| attributeIterator()  | 元素属性的iterator，其中每个元素都是Attribute对象        |
-| attributeValue()     | 元素的某个指定属性所含的值                            |
-| elementIterator()    | 元素的子元素的iterator，其中每个元素都是Element对象        |
-| element()            | 元素的某个指定（qualified name或者local name）的子元素  |
-| elementText()        | 元素的某个指定（qualified name或者local name）的子元素中的text信息 |
-| getParent            | 元素的父元素                                   |
-| getPath()            | 元素的XPath表达式，其中父元素的qualified name和子元素的qualified name之间使用"/"分隔 |
-| isTextOnly()         | 是否该元素只含有text或是空元素                        |
-| isRootElement()      | 是否该元素是XML树的根节点                           |
+| getQName\(\) | 元素的QName对象 |
+| --- | --- |
+| getNamespace\(\) | 元素所属的Namespace对象 |
+| getNamespacePrefix\(\) | 元素所属的Namespace对象的prefix |
+| getNamespaceURI\(\) | 元素所属的Namespace对象的URI |
+| getName\(\) | 元素的local name |
+| getQualifiedName\(\) | 元素的qualified name |
+| getText\(\) | 元素所含有的text内容，如果内容为空则返回一个空字符串而不是null |
+| getTextTrim\(\) | 元素所含有的text内容，其中连续的空格被转化为单个空格，该方法不会返回null |
+| attributeIterator\(\) | 元素属性的iterator，其中每个元素都是Attribute对象 |
+| attributeValue\(\) | 元素的某个指定属性所含的值 |
+| elementIterator\(\) | 元素的子元素的iterator，其中每个元素都是Element对象 |
+| element\(\) | 元素的某个指定（qualified name或者local name）的子元素 |
+| elementText\(\) | 元素的某个指定（qualified name或者local name）的子元素中的text信息 |
+| getParent | 元素的父元素 |
+| getPath\(\) | 元素的XPath表达式，其中父元素的qualified name和子元素的qualified name之间使用"/"分隔 |
+| isTextOnly\(\) | 是否该元素只含有text或是空元素 |
+| isRootElement\(\) | 是否该元素是XML树的根节点 |
 
 ### 3、案例见代码
 
@@ -378,5 +376,8 @@ Attribute idAttr=root.attribute("id");// 属性名name
 ## 八、总结
 
 1. DOM4J性能最好，连Sun的JAXM也在用DOM4J。目前许多开源项目中大量采用DOM4J，例如大名鼎鼎的hibernate也用DOM4J来读取XML配置文件。如果不考虑可移植性，那就采用DOM4J.
-2. JDOM和DOM在性能测试时表现不佳，在测试10M文档时内存溢出。在小文档情况下还值得考虑使用DOM和JDOM。虽然JDOM的开发者已经说明他们期望在正式发行版前专注性能问题，但是从性能观点来看，它确实没有值得推荐之处。另外，DOM仍是一个非常好的选择。DOM实现广泛应用于多种编程语言。它还是许多其它与XML相关的标准的基础，因为它正式获得W3C推荐(与基于非标准的Java模型相对)，所以在某些类型的项目中可能也需要它(如在JavaScript中使用DOM)。
-3. SAX表现较好，这要依赖于它特定的解析方式－事件驱动。一个SAX检测即将到来的XML流，但并没有载入到内存(当然当XML流被读入时，会有部分文档暂时隐藏在内存中)。
+2. JDOM和DOM在性能测试时表现不佳，在测试10M文档时内存溢出。在小文档情况下还值得考虑使用DOM和JDOM。虽然JDOM的开发者已经说明他们期望在正式发行版前专注性能问题，但是从性能观点来看，它确实没有值得推荐之处。另外，DOM仍是一个非常好的选择。DOM实现广泛应用于多种编程语言。它还是许多其它与XML相关的标准的基础，因为它正式获得W3C推荐\(与基于非标准的Java模型相对\)，所以在某些类型的项目中可能也需要它\(如在JavaScript中使用DOM\)。
+3. SAX表现较好，这要依赖于它特定的解析方式－事件驱动。一个SAX检测即将到来的XML流，但并没有载入到内存\(当然当XML流被读入时，会有部分文档暂时隐藏在内存中\)。
+
+
+
