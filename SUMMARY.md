@@ -2,8 +2,6 @@
 
 * [简介](README.md)
 * [第一章](di-yi-zhang.md)
-  * 二、概要
-  * [一、XML](di-yi-zhang/xml.md)
 * [第二章](di-er-zhang.md)
 * [第三章](di-san-zhang.md)
 
