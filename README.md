@@ -151,47 +151,46 @@
 
 ## 三、什么WEB 服务器
 
-1. 定义
+### 1、概念
 
-   > 1. 一台负责提供网页的电脑，主要是各种编程语言构建而成的，通过HTTP协议传给客户端（一般是指网页浏览器）。
-   > 2. 一个提供网页的服务器程序
-   > 3. 服务器是一种被动程序：只有当Internet上运行在其他计算机中的浏览器发出请求时，服务器才会响应
+> 1. 一台负责提供网页的电脑，主要是各种编程语言构建而成的，通过HTTP协议传给客户端（一般是指网页浏览器）。
+> 2. 一个提供网页的服务器程序
+> 3. 服务器是一种被动程序：只有当Internet上运行在其他计算机中的浏览器发出请求时，服务器才会响应
 
+### 2、常见的WEB服务器
 
-1. 常见的WEB服务器
+- Tomcat服务器
 
-   - Tomcat服务器
+  > Tomcat是一个实现了JAVA EE标准的最小的WEB服务器，是Apache 软件基金会的Jakarta 项目中的一个核心项目，由Apache、Sun 和其他一些公司及个人共同开发而成。因为Tomcat 技术先进、性能稳定，而且开源免费，因而深受Java 爱好者的喜爱并得到了部分软件开发商的认可，成为目前比较流行的Web 应用服务器。学习JavaWeb开发一般都使用Tomcat服务器，该服务器支持全部JSP以及Servlet规范
 
-     > Tomcat是一个实现了JAVA EE标准的最小的WEB服务器，是Apache 软件基金会的Jakarta 项目中的一个核心项目，由Apache、Sun 和其他一些公司及个人共同开发而成。因为Tomcat 技术先进、性能稳定，而且开源免费，因而深受Java 爱好者的喜爱并得到了部分软件开发商的认可，成为目前比较流行的Web 应用服务器。学习JavaWeb开发一般都使用Tomcat服务器，该服务器支持全部JSP以及Servlet规范
+- Apache服务器
 
-   - Apache服务器
+  > Apache HTTP Server（简称Apache）是Apache软件基金会的一个开放源代码的网页服务器软件，可以在大多数电脑操作系统中运行，由于其跨平台和安全性被广泛使用，是最流行的Web服务器软件之一。它快速可靠，并且可以通过简单API扩充，将Python/Perl等解析器编译到服务器中
 
-     > Apache HTTP Server（简称Apache）是Apache软件基金会的一个开放源代码的网页服务器软件，可以在大多数电脑操作系统中运行，由于其跨平台和安全性被广泛使用，是最流行的Web服务器软件之一。它快速可靠，并且可以通过简单API扩充，将Python/Perl等解析器编译到服务器中
+- IBM WebSphere服务器
 
-   - IBM WebSphere服务器
+  > WebSphere Application Server 是一种功能完善、开放的Web应用程序服务器，是IBM公司电子商务计划的核心部分，它是基于 Java 的应用环境，用于建立、部署和管理 Internet 和 Intranet Web 应用程序。这一整套产品进行了扩展，以适应 Web应用程序服务器的需要，范围从简单到高级直到企业级
 
-     > WebSphere Application Server 是一种功能完善、开放的Web应用程序服务器，是IBM公司电子商务计划的核心部分，它是基于 Java 的应用环境，用于建立、部署和管理 Internet 和 Intranet Web 应用程序。这一整套产品进行了扩展，以适应 Web应用程序服务器的需要，范围从简单到高级直到企业级
+- WebLogic服务器
 
-   - WebLogic服务器
+  > 是美商Oracle的主要产品之一，系购并得来。是商业市场上主要的Java（J2EE）应用服务器软件之一，是世界上第一个成功商业化的J2EE应用服务器，目前已推出到12c（12.1.1）版。而此产品也延伸出WebLogic Portal, WebLogic Integration等企业用的中间件（但目前Oracle主要以Fusion Middleware融合中间件来取代这些WebLogic Server之外的企业包），以及OEPE（Oracle Enterprise Pack for Eclipse）开发工具。
+  > WebLogic最早由WebLogic Inc.开发，后并入BEA公司，最终BEA公司又并入Oracle公司
 
-     > 是美商Oracle的主要产品之一，系购并得来。是商业市场上主要的Java（J2EE）应用服务器软件之一，是世界上第一个成功商业化的J2EE应用服务器，目前已推出到12c（12.1.1）版。而此产品也延伸出WebLogic Portal, WebLogic Integration等企业用的中间件（但目前Oracle主要以Fusion Middleware融合中间件来取代这些WebLogic Server之外的企业包），以及OEPE（Oracle Enterprise Pack for Eclipse）开发工具。
-     > WebLogic最早由WebLogic Inc.开发，后并入BEA公司，最终BEA公司又并入Oracle公司
+- Nginx服务器
 
-   - Nginx服务器
+  > Nginx（发音同engine x）是一个 Web服务器，也可以用作反向代理，负载平衡器和 HTTP缓存。该软件由 Igor Sysoev 创建，并于2004年首次公开发布。同名公司成立于2011年，以提供支持。
+  > Nginx 是免费的开源软件，根据类似 BSD许可证的条款发布。大部分 Web服务器通常使用 NGINX 作为负载均衡器。
 
-     > Nginx（发音同engine x）是一个 Web服务器，也可以用作反向代理，负载平衡器和 HTTP缓存。该软件由 Igor Sysoev 创建，并于2004年首次公开发布。同名公司成立于2011年，以提供支持。
-     > Nginx 是免费的开源软件，根据类似 BSD许可证的条款发布。大部分 Web服务器通常使用 NGINX 作为负载均衡器。
+- IIS服务器
 
-   - IIS服务器
+  > Microsoft的Web服务器产品为Internet Information Services （IIS），IIS 是允许在公共Intranet或Internet上发布信息的Web服务器。ⅡS是目前最流行的Web服务器产品之一，很多著名的网站都是建立在ⅡS的平 台上。IIS提供了一个图形界面的管理工具，称为Internet信息服务管理器，可用于监视配置和控制Internet服务
 
-     > Microsoft的Web服务器产品为Internet Information Services （IIS），IIS 是允许在公共Intranet或Internet上发布信息的Web服务器。ⅡS是目前最流行的Web服务器产品之一，很多著名的网站都是建立在ⅡS的平 台上。IIS提供了一个图形界面的管理工具，称为Internet信息服务管理器，可用于监视配置和控制Internet服务
+- Lighttpd服务器
 
-   - Lighttpd服务器
-
-     > Lighttpd是由一个德国人写的开源软件，其目标是提供一个专门针对高性能网站，安全、快
-     > 速、兼容性好并且灵活的Web Server环境。它具有内存开销低、CPU占用率低、效能好，以及
-     > 模块丰富等特点。支持FastCGI、CGI. Auth、输出压缩(output compress )、URL重写及Alias
-     > 等重要功能。Lighttpd跟Nginx一样，也是一款轻量级Web服务器，是Nginx的竞争对手之一		
+  > Lighttpd是由一个德国人写的开源软件，其目标是提供一个专门针对高性能网站，安全、快
+  > 速、兼容性好并且灵活的Web Server环境。它具有内存开销低、CPU占用率低、效能好，以及
+  > 模块丰富等特点。支持FastCGI、CGI. Auth、输出压缩(output compress )、URL重写及Alias
+  > 等重要功能。Lighttpd跟Nginx一样，也是一款轻量级Web服务器，是Nginx的竞争对手之一		
 
 
 
