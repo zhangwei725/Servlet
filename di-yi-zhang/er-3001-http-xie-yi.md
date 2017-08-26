@@ -8,6 +8,7 @@ HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件
 
 HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用比较广泛是HTTP/1.0和。
 
+
 HTTP协议工作于客户端-服务端架构为上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。
 
 ![img](http://qidianlife.oss-cn-shanghai.aliyuncs.com/qidian_web/%E5%85%B3%E4%BA%8EHTTP%E5%8D%8F%E8%AE%AE%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/1.jpg)
@@ -368,7 +369,12 @@ Web服务器解析请求，定位请求资源。服务器将资源复本写到TC
 
 1. ​    multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式
 
-
+FTP(File Transfer Protocol）是文件传输协议，一般上传下载用FTP服务，数据端口是20H，控制端口是21H。
+Telnet服务是用户远程登录服务，使用23H端口，使用明码传送，保密性差、简单方便。
+DNS(Domain Name Service）是域名解析服务，提供域名到IP地址之间的转换，使用端口53。
+SMTP(Simple Mail Transfer Protocol）是简单邮件传输协议，用来控制信件的发送、中转，使用端口25。
+NFS（Network File System）是网络文件系统，用于网络中不同主机间的文件共享。
+HTTP(Hypertext Transfer Protocol）是超文本传输协议，用于实现互联网中的WWW服务，使用端口80
 
 
 
