@@ -27,7 +27,7 @@
    - 初始化JSP页面中要用到的JavaBean或对象,保存在作用域中
    - 根据处理中不同的分支和结果，决定转向那个JSP等
 3. JSP作为View层，负责生成交互后返回的界面
-   1. 它主要通过信息共享，获取Servlet生成的对象或JavaBean，从中取出数据，插入到HTML页面中
+   - 它主要通过信息共享，获取Servlet生成的对象或JavaBean，从中取出数据，插入到HTML页面中
 
 ## 三、EJB(Enterprise Java bean)
 
@@ -36,12 +36,12 @@
 1. 官方解释:商务软件的核心部分是它的业务逻辑
 2. EJB是sun的JavaEE服务器端组件模型，设计目标与核心应用是部署分布式应用程序。简单来说就是把已经编写好的程序（即：类）打包放在服务器上执行。凭借java跨平台的优势，用EJB技术部署的分布式系统可以不限于特定的平台。EJB (Enterprise JavaBean)是J2EE(javaEE)的一部分，定义了一个用于开发基于组件的企业多重应用程序的标准。其特点包括网络服务支持和核心开发工具(SDK)。 在J2EE里，Enterprise Java Beans(EJB)称为Java 企业Bean，是Java的核心代码，分别是会话Bean（Session Bean），实体Bean（Entity Bean）和消息驱动Bean（MessageDriven Bean）。(百科)
 3. EJB要解决的问题
-   1. 数据存储(Persistent)
-   2. 分布式 (Distributed)
-   3. 事务处理(Transactional)
-   4. 安全性 (Secure)
-   5. 高可用性
-   6. 可扩展 (Scalable)
+   - 数据存储(Persistent)
+   - 分布式 (Distributed)
+   - 事务处理(Transactional)
+   - 安全性 (Secure)
+   - 高可用性
+   - 可扩展 (Scalable)
 
 ### 2、相关技术
 
@@ -102,4 +102,16 @@
 ​	RMI实现原理 ：就是通过Java对象可序列化机制实现分布计算。
 
 ​	服务器集群： 就是通过RMI的通信，连接不同功能模块的服务器，以实现一个完整的功能。
+
+
+
+
+
+
+
+
+
+
+
+
 
