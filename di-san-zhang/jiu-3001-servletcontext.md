@@ -2,21 +2,23 @@
 
 ## 一、什么是Servlet上下文
 
-ServletContext,是一个全局的储存信息的空间，服务器开始，其就存在，服务器关闭，其才释放。
+> ServletContext,是一个全局的储存信息的空间，服务器开始，其就存在，服务器关闭，其才释放。
+>
+> Request，一个用户可有多个；session，一个用户一个；而servletContext，所有用户共用一个。所以，为了节省空间，提高效率，ServletContext中，要放必须的、重要的、所有用户需要共享的线程又是安全的一些信息。
+>
+> 换一种方式说吧，运行在Java虚拟机中的每一个Web应用程序都有一个与之相关的Servlet上下文。ServletContext对象是Web服务器中的一个已知路径的根，Servlet上下文被定位于[http://localhost:8080/appname](http://localhost:8080/appname). 以 /项目名 请求路径（称为上下文路径）开始的所有请求被发送到与此ServletContext关联的Web应用程序。一个ServletContext对象表示了一个Web应用程序的上下文
+>
+> Servlet上下文提供对应用程序中所有Servlet所共有的各种资源和功能的访问。Servlet上下文API用于设置应用程序中所有Servlet共有的信息。Servlet可能需要共享他们之间的共有信息。运行于同一服务器的Servlet有时会共享资源，如JSP页面、文件和其他Servlet
+>
+> 举例：
+>
+> ​    比如，做一个购物类的网站，要从数据库中提取物品信息，如果用session保存这些物品信息，每个用户都访问一边数据库，效率就太低了；所以要用来Servlet上下文来保存，在服务器开始时，就访问数据库，将物品信息存入Servlet上下文中，这样，每个用户只用从上下文中读入物品信息就行了
+>
+> ​创建时机：加载web应用时创建ServletContext对象。
+>
+> ​得到对象： 从ServletConfig对象的getServletContext方法得到。
 
-Request，一个用户可有多个；session，一个用户一个；而servletContext，所有用户共用一个。所以，为了节省空间，提高效率，ServletContext中，要放必须的、重要的、所有用户需要共享的线程又是安全的一些信息。
 
-换一种方式说吧，运行在Java虚拟机中的每一个Web应用程序都有一个与之相关的Servlet上下文。ServletContext对象是Web服务器中的一个已知路径的根，Servlet上下文被定位于[http://localhost:8080/appname](http://localhost:8080/appname). 以 /项目名 请求路径（称为上下文路径）开始的所有请求被发送到与此ServletContext关联的Web应用程序。一个ServletContext对象表示了一个Web应用程序的上下文
-
-Servlet上下文提供对应用程序中所有Servlet所共有的各种资源和功能的访问。Servlet上下文API用于设置应用程序中所有Servlet共有的信息。Servlet可能需要共享他们之间的共有信息。运行于同一服务器的Servlet有时会共享资源，如JSP页面、文件和其他Servlet
-
-举例：
-
-​    比如，做一个购物类的网站，要从数据库中提取物品信息，如果用session保存这些物品信息，每个用户都访问一边数据库，效率就太低了；所以要用来Servlet上下文来保存，在服务器开始时，就访问数据库，将物品信息存入Servlet上下文中，这样，每个用户只用从上下文中读入物品信息就行了
-
-​创建时机：加载web应用时创建ServletContext对象。
-
-​得到对象： 从ServletConfig对象的getServletContext方法得到。
 
 ## 二、开发中常用场景
 
@@ -65,7 +67,7 @@ Servlet上下文提供对应用程序中所有Servlet所共有的各种资源和
    String url = prop.getProperty("url");
    ```
 
-1. 使用ServletContext的getRealPath方法，获得文件的完整绝对路径path，再使用字节流读取path下的文件
+2. 使用ServletContext的getRealPath方法，获得文件的完整绝对路径path，再使用字节流读取path下的文件
 
    ```java
      String path = this.getServletContext().getRealPath("/WEB-INF/classes/db.properties");
@@ -83,7 +85,7 @@ Servlet上下文提供对应用程序中所有Servlet所共有的各种资源和
         String url = prop.getProperty("url");
    ```
 
-1. 使用ServletContext的getResource方法，获得一个url对象，调用该类的openStream方法返回一个字节流，读取数据
+3. 使用ServletContext的getResource方法，获得一个url对象，调用该类的openStream方法返回一个字节流，读取数据
 
    ```java
      URL url = this.getServletContext().getResource("/WEB-INF/classes/db.properties");
@@ -93,7 +95,7 @@ Servlet上下文提供对应用程序中所有Servlet所共有的各种资源和
      String url1 = prop.getProperty("url");
    ```
 
-2. 不同位置的资源文件的读取方式
+4. 不同位置的资源文件的读取方式
 
    1. 当资源文件在包下面时
 
