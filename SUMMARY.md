@@ -15,6 +15,7 @@
   * [九、ServletContext](di-san-zhang/jiu-3001-servletcontext.md)
   * 十、Servlet线程安全问题
 * [第四章](di-si-zhang.md)
+  * 十一、Servlet多请求合并
   * [其它](di-si-zhang/qi-ta.md)
   * [XML](di-si-zhang/3001-xml.md)
 
