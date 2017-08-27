@@ -421,7 +421,9 @@ ServletRequest代表一个HTTP请求，请求在内存中是一个对象，这�
 1. forword\(ServletRequest req,ServletResponse resp\)
 
    ```
-        该方法用于将请求从一个Servlet传递给服务器上的另外的Servlet，jsp或者html文件，在forword方法调用之后，之前在响应缓存中没有提交的内容将会被自动清除。该方法将请求转发给其他Servlet，将又被调用的Servlet负责对请求做出响应，原先Servlet执行终止。
+   该方法用于将请求从一个Servlet传递给服务器上的另外的Servlet，jsp或者html文件，在forword方法调用之后，
+   之前在响应缓存中没有提交的内容将会被自动清除。该方法将请求转发给其他Servlet，
+   将又被调用的Servlet负责对请求做出响应，原先Servlet执行终止。
    ```
 
 2. include\(ServletRequest req,ServletResponse resp\)
