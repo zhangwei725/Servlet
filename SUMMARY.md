@@ -8,7 +8,7 @@
 * [第二章](di-er-zhang.md)
   * [四、创建web项目](di-er-zhang/si-3001-chuang-jian-web-xiang-mu.md)
   * [五、Servlet基础](di-er-zhang/wu-3001-servlet-ji-chu.md)
-  * 六、Servlet API详解
+  * [六、Servlet API详解](di-er-zhang/liu-3001-servlet-api-xiang-jie.md)
 * [第三章](di-san-zhang.md)
 * [第四章](di-si-zhang.md)
   * [其它](di-si-zhang/qi-ta.md)
