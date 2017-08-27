@@ -429,7 +429,8 @@ ServletRequest代表一个HTTP请求，请求在内存中是一个对象，这�
 2. include\(ServletRequest req,ServletResponse resp\)
 
    ```
-          该方法用于将请求转发给其他Servlet，被调用的Servlet对该请求做出的响应将并入原来的响应对象中，原先的Servlet还可以继续输出响应信息。
+   该方法用于将请求转发给其他Servlet，被调用的Servlet对该请求做出的响应将并入原来的响应对象中，
+   原先的Servlet还可以继续输出响应信息。
    ```
 
 3. forword\(\),include\(\)
