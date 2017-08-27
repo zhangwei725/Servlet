@@ -328,6 +328,10 @@ public class FirstServlet extends HttpServlet {
    4、把上述中的代码注释掉，重启tomcat服务器，输入[http://localhost:8080](http://localhost:8080/) ，将发现页面中的图片将显示不出，也即是因为这个原因
    ```
 
+七，HttpServlet继承关系图
+
+> ![](http://opzv089nq.bkt.clouddn.com/17-8-27/2803985.jpg)
+
 ## 六、思考题
 
 URL输入http://localhost:8080/app/index.html 如何读取文件？
