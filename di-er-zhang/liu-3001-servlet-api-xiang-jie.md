@@ -30,25 +30,27 @@
 2. service\(ServletRequest req,ServletResponse res\)
 
    ```
-      容器调用service()方法处理客户端的请求，在调用service()方法被容器调用之前，必须确保Init()方法正确完成，容器会构造一个ServletRequest对象和ServletResponse对象作为参数传递给service()方法。
+   容器调用service()方法处理客户端的请求，在调用service()方法被容器调用之前，
+   必须确保Init()方法正确完成，容器会构造一个ServletRequest对象和ServletResponse对象作为参数传递给service()方法。
    ```
 
 3. destroy\(\);
 
    ```
-      当容器检测到一个Servlet对象应该从服务中被移除的时候，容器会调用该对象的destory方法，以便让Servlet对象可以释放它所使用的资源，保存数据到数据库中。
+   当容器检测到一个Servlet对象应该从服务中被移除的时候，容器会调用该对象的destory方法，
+   以便让Servlet对象可以释放它所使用的资源，保存数据到数据库中。
    ```
 
 4. ServletConfig getServletConfig\(\)
 
    ```
-      返回容器调用init()方法时传递给Servlet对象的ServletConfig对象
+   返回容器调用init()方法时传递给Servlet对象的ServletConfig对象
    ```
 
 5. String getServletInfo\(\)
 
    ```
-      返回一个String类型的字符串，包含了关于Servlet的信息，例如版权，作者等。
+   返回一个String类型的字符串，包含了关于Servlet的信息，例如版权，作者等。
    ```
 
 ## 二、ServletRequest
