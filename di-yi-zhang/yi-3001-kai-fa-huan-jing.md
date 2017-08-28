@@ -100,11 +100,11 @@ Tomcat可以运行Servlet和JSP的一个小型的轻量级应用服务器，运�
 
 > 存放Tomcat的临时文件，这个目录下的东西可以在停止Tomcat后删除！
 
-   6、webapps
+6、webapps
 
 > 存放web项目的目录，其中每个文件夹都是一个项目；如果这个目录下已经存在了目录，那么都是tomcat自带的。项目。其中ROOT是一个特殊的项目,在地址栏中没有给出项目目录时，对应的就是ROOT项目。http://localhost:8080/app，进入示例项目。其中app就是项目名，即文件夹的名字。
 
-   7、work
+7、work
 
 > 运行时生成的文件，最终运行的文件都在这里。通过webapps中的项目生成的！可以把这个目录下的内容删除，再次运行时会生再次生成work目录。当客户端用户访问一个JSP文件时，Tomcat会通过JSP生成Java文件，然后再编译Java文件生成class文件，生成的java和class文件都会存放到这个目录下。
 
