@@ -68,7 +68,7 @@ Tomcat可以运行Servlet和JSP的一个小型的轻量级应用服务器，运�
 
    > 该目录下存放的是二进制可执行文件会有startup.bat和shutdown.bat文件（其余文件无需理会），startup.bat用来启动Tomcat，但需要先配置JAVA_HOME环境变量才能启动，shutdawn.bat用来停止Tomcat；
 
-   2、conf
+2、conf
 
    > 这是一个非常非常重要的目录，这个目录下有四个最为重要的文件：
 
