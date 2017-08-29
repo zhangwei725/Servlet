@@ -1,4 +1,4 @@
-# 创建Web项目\(Eclipse\)
+# 创建Web项目(Eclipse)
 
 ## 一、传统的Eclipse创建动态Web项目
 

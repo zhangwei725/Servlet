@@ -68,7 +68,7 @@ Tomcat可以运行Servlet和JSP的一个小型的轻量级应用服务器，运�
 
    > 该目录下存放的是二进制可执行文件会有startup.bat和shutdown.bat文件（其余文件无需理会），startup.bat用来启动Tomcat，但需要先配置JAVA_HOME环境变量才能启动，shutdawn.bat用来停止Tomcat；
 
-   2、conf
+2、conf
 
    > 这是一个非常非常重要的目录，这个目录下有四个最为重要的文件：
 
@@ -88,23 +88,23 @@ Tomcat可以运行Servlet和JSP的一个小型的轻量级应用服务器，运�
 
   > 对所有应用的统一配置，通常我们不会去配置它。
 
-   3、lib
+3、lib
 
 > Tomcat的类库，里面是一大堆jar文件。如果需要添加Tomcat依赖的jar文件，可以把它放到这个目录中，当然也可以把应用依赖的jar文件放到这个目录中，这个目录中的jar所有项目都可以共享之，但这样你的应用放到其他Tomcat下时就不能再共享这个目录下的Jar包了，所以建议只把Tomcat需要的Jar包放到这个目录下，各个应用需要的jar各个应用自己管理。
 
-   4、 logs
+4、 logs
 
 > 这个目录中都是日志文件，记录了Tomcat启动和关闭的信息，如果启动Tomcat时有错误，那么异常也会记录在日志文件中。
 
-   5、temp
+5、temp
 
 > 存放Tomcat的临时文件，这个目录下的东西可以在停止Tomcat后删除！
 
-   6、webapps
+6、webapps
 
 > 存放web项目的目录，其中每个文件夹都是一个项目；如果这个目录下已经存在了目录，那么都是tomcat自带的。项目。其中ROOT是一个特殊的项目,在地址栏中没有给出项目目录时，对应的就是ROOT项目。http://localhost:8080/app，进入示例项目。其中app就是项目名，即文件夹的名字。
 
-   7、work
+7、work
 
 > 运行时生成的文件，最终运行的文件都在这里。通过webapps中的项目生成的！可以把这个目录下的内容删除，再次运行时会生再次生成work目录。当客户端用户访问一个JSP文件时，Tomcat会通过JSP生成Java文件，然后再编译Java文件生成class文件，生成的java和class文件都会存放到这个目录下。
 
