@@ -203,7 +203,7 @@
 
 ```
 <%@ page language="java" import="java.util.*" 
-	contentType="text/html; charset=utf-8" %>
+    contentType="text/html; charset=utf-8" %>
 <html>  
     <head>  
     <title>中文显示示例</title>
@@ -258,7 +258,7 @@ pageEncoding="utf-8" %>
 
 ### 1、说明
 
->  大部分数据库都支持以unicode编码方式，所以解决Java与数据库之间的乱码问题比较明智的方式是直接使用unicode编码与数据库交互。很多数据库驱动自动支持unicode，如Microsoft的SQLServer驱动。其他大部分数据库驱动，可以在驱动的url参数中指定，
+> 大部分数据库都支持以unicode编码方式，所以解决Java与数据库之间的乱码问题比较明智的方式是直接使用unicode编码与数据库交互。很多数据库驱动自动支持unicode，如Microsoft的SQLServer驱动。其他大部分数据库驱动，可以在驱动的url参数中指定，
 
 ### 2、数据库相关
 
@@ -266,11 +266,11 @@ pageEncoding="utf-8" %>
 
 2. 创建数据库
 
-   > 在创建数据库的过程中
-   > CREATE DATABASE 数据库名 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;创建表
-
-   >在创建表生成的SQL后面加上
-   >ENGINE=InnoDB DEFAULT CHARSET=utf8;
+   > 在创建数据库的过程中  
+   > CREATE DATABASE 数据库名 DEFAULT CHARACTER SET utf8 COLLATE utf8\_general\_ci;创建表
+   >
+   > 在创建表生成的SQL后面加上  
+   > ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ### 3、通过jdbc连接时候
 
@@ -305,19 +305,17 @@ File -->Setting --> Editor --> File Encodings --> 三个地方全部使用改成
 
 一般地，我们都会在jsp文件的开头加上这样的声明：
 
-> <%@ page language="java"pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+> &lt;%@ page language="java"pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%&gt;
 >
-> jsp文件的执行过程如下：
-> （1）jsp编译成.java。它会根据pageEncoding的设定编码格式读取jsp，结果是由指定的编码方案翻译成统一的UTF-8编码的java源码（即.java）。
-> （2）.java编译成.class。将第一步编译的UTF-8编码的java源码编译成UTF-8编码的二进制码（即.class）。
-> （3）Tomcat执行第二步编译好的二进制码，输出结果，并告诉浏览器我是以何种方式编码的（contentType的charset属性）。
+> jsp文件的执行过程如下：  
+> （1）jsp编译成.java。它会根据pageEncoding的设定编码格式读取jsp，结果是由指定的编码方案翻译成统一的UTF-8编码的java源码（即.java）。  
+> （2）.java编译成.class。将第一步编译的UTF-8编码的java源码编译成UTF-8编码的二进制码（即.class）。  
+> （3）Tomcat执行第二步编译好的二进制码，输出结果，并告诉浏览器我是以何种方式编码的（contentType的charset属性）。  
 > 应该注意的是，contentType的默认设定为"text/html;charset=ISO-8859-1"，也就是说默认是ISO-8859-1编码格式。
-
-
 
 ## 八、Tomcat配置文件
 
->   对于以GET方式发送的请求中包含中文参数的情形，可能经常会出现乱码现象。这是因为Tomcat默认是按ISO-8859-1的方式对URL进行解码，而ISO-8859-1并未包括中文字符，这样的话中文字符肯定就不能被正确解析了。
+> 对于以GET方式发送的请求中包含中文参数的情形，可能经常会出现乱码现象。这是因为Tomcat默认是按ISO-8859-1的方式对URL进行解码，而ISO-8859-1并未包括中文字符，这样的话中文字符肯定就不能被正确解析了。
 >
 > 解决方法：tomcat安装目录 --&gt; conf --&gt; server.xml，设置useBodyEncodingForURI或者URIEncoding属性：
 >
@@ -379,4 +377,6 @@ jdbc:mysql://localhost:3306/database?useUnicode=true&characterEncoding=UTF-8
 > 3. 就如上面所说，GET请求有问题，尽量使用POST请求，这个也是Web开发的一个基本要领：
 > 4. JavaScript和Ajax乱码的避免，注意JavaScript默认是ISO8859的编码，避免JS/AJAX乱码和GET一样，不要在URL里面使用中文，实在避免不了，就只能在生成链接的时候转码，绝对不能想当然的认为SetCharacterEncodingFilter会帮你做什么事情。
 > 5. 尽早统一开发环境，早点模拟真实环境测试，但凡软件开发都是这么干的，但仍然值得注意。我这出现过一次状况，程序是在Win下编译的，拿去Linux上测试没问题，等实际部署的时候代码是在Linux下编译，结果乱码，秋后算帐总觉得有点晚。
+
+
 
