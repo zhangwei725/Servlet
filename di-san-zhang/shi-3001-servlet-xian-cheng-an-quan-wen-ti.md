@@ -85,92 +85,97 @@
 >
 > 在web.xml 文件中使用<filter>和<filter-mapping>元素对编写的filter类进行注册，并设置它所能拦截的资源。	
 
-#### 2、JAVA代码
+#### 2、示例代码
 
-```
-public class CharsetFilter implements Filter {
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-    
-    }
+1. Java代码
 
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-        // 对request、response进行一些预处理
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html ; charset=utf-8");
-        //继续拦截
-        filterChain.doFilter(request, response);
-        
-    }
+   ```
+   public class CharsetFilter implements Filter {
+       @Override
+       public void init(FilterConfig filterConfig) throws ServletException {
+       
+       }
 
-    @Override
-    public void destroy() {
+       @Override
+       public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+           // 对request、response进行一些预处理
+           request.setCharacterEncoding("utf-8");
+           response.setContentType("text/html ; charset=utf-8");
+           //继续拦截
+           filterChain.doFilter(request, response);
+           
+       }
 
-    }
-}
-```
+       @Override
+       public void destroy() {
 
-```
- <filter>
-        <filter-name>charset-filter</filter-name>
-        <filter-class>com.werner.demo.filter.CharsetFilter</filter-class>
-        <init-param>
-            <param-name>charset</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-        <init-param>
-            <param-name>enable</param-name>
-            <param-value>true</param-value>
+       }
+   }
+   ```
 
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>charset-filter</filter-name>
-        <url-pattern>/servlet/*</url-pattern>
-        <url-pattern>/l</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-    <servlet>
-        <servlet-name>Filter</servlet-name>
-        <servlet-class>com.werner.demo.servlet.HttpServletFilter</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Filter</servlet-name>
-        <url-pattern>/l</url-pattern>
-    </servlet-mapping>
+2.  在xml中注册
 
-说明:
-1. <filter>  ：配置 Filter 名称，实现类以及初始化参数。可以同时配置多个初始化参数。
-2. <filter-mapping> ：配置什么规则下使用这个Filter 。
-1、<url-pattern> ：配置url的规则，可以配置多个，也可以使用通配符（*）。例如 /jsp/* 适用于本ContextPath下以“/jsp/ ”开头的所有servlet路径， *.do 适用于所有以“ .do”结尾的servlet路径。
+   ```
+    <filter>
+           <filter-name>charset-filter</filter-name>
+           <filter-class>com.werner.demo.filter.CharsetFilter</filter-class>
+           <init-param>
+               <param-name>charset</param-name>
+               <param-value>UTF-8</param-value>
+           </init-param>
+           <init-param>
+               <param-name>enable</param-name>
+               <param-value>true</param-value>
 
-2、<dispatcher> ：配置到达servlet的方式，可以同时配置多个。有四种取值：REQUEST、FORWARD、ERROR、INCLUDE。如果没有配置，则默认为REQUEST。它们的区别是：
-	1. REQUEST ：表示仅当直接请求servlet时才生效。
-	2. FORWARD ：表示仅当某servlet通过forward转发到该servlet时才生效。
- 	3. INCLUDE ：Jsp中可以通过<jsp:include/>请求某servlet， 只有这种情况才有效。
-	4. ERROR ：Jsp中可以通过<%@page errorPage="error.jsp" %>指定错误处理页面，仅在这种情况下才生效。
-```
+           </init-param>
+       </filter>
+       <filter-mapping>
+           <filter-name>charset-filter</filter-name>
+           <url-pattern>/servlet/*</url-pattern>
+           <url-pattern>/l</url-pattern>
+           <dispatcher>REQUEST</dispatcher>
+       </filter-mapping>
+       <servlet>
+           <servlet-name>Filter</servlet-name>
+           <servlet-class>com.werner.demo.servlet.HttpServletFilter</servlet-class>
+       </servlet>
+       <servlet-mapping>
+           <servlet-name>Filter</servlet-name>
+           <url-pattern>/l</url-pattern>
+       </servlet-mapping>
+   ```
+
+   ​
+
+3.  说明:
+
+   > - <filter>  ：配置 Filter 名称，实现类以及初始化参数。可以同时配置多个初始化参数。
+   >
+   > - <filter-mapping> ：配置什么规则下使用这个Filter 。
+   >   1、<url-pattern> ：配置url的规则，可以配置多个，也可以使用通配符（*）。例如 /jsp/* 适用于本ContextPath下以“/jsp/ ”开头的所有servlet路径， *.do 适用于所有以“ .do”结尾的servlet路径。
+   >
+   >   2、<dispatcher> ：配置到达servlet的方式，可以同时配置多个。有四种取值：REQUEST、FORWARD、ERROR、INCLUDE。如果没有配置，则默认为REQUEST。它们的区别是：
+   >
+   >   - REQUEST ：表示仅当直接请求servlet时才生效。
+   >   - FORWARD ：表示仅当某servlet通过forward转发到该servlet时才生效。
+   >   - INCLUDE ：Jsp中可以通过<jsp:include/>请求某servlet， 只有这种情况才有效。
+   >   - ERROR ：Jsp中可以通过<%@page errorPage="error.jsp" %>指定错误处理页面，仅在这种情况下才生效。	
 
 ### 1.5、Filter应用场景
 
 **1、统一POST请求中文字符编码的过滤器 2、控制浏览器缓存页面中的静态资源的过滤器**
 
-```
-有些动态页面中引用了一些图片或css文件以修饰页面效果，这些图片和css文件经常是不变化的，所以为减轻服务器的压力，可以使用filter控制浏览器缓存这些文件，以提升服务器的性能。
-```
+> 有些动态页面中引用了一些图片或css文件以修饰页面效果，这些图片和css文件经常是不变化的，所以为减轻服务器的压力，可以使用filter控制浏览器缓存这些文件，以提升服务器的性能。
+
+
 
 **3、使用Filter实现URL级别的权限认证**
 
-```
-在实际开发中我们经常把一些执行敏感操作的servlet映射到一些特殊目录中，并用filter把这些特殊目录保护起来，限制只能拥有相应访问权限的用户才能访问这些目录下的资源。从而在我们系统中实现一种URL级别的权限功能。
-```
+> 在实际开发中我们经常把一些执行敏感操作的servlet映射到一些特殊目录中，并用filter把这些特殊目录保护起来，限制只能拥有相应访问权限的用户才能访问这些目录下的资源。从而在我们系统中实现一种URL级别的权限功能。
 
 **4、实现用户自动登陆**
 
-```
-首先，在用户登陆成功后，发送一个名称为user的cookie给客户端，cookie的值为用户名和md5加密后的密码。编写一个AutoLoginFilter，这个filter检查用户是否带有名称为user的cookie，如果有，则调用dao查询cookie的用户名和密码是否和数据库匹配，匹配则向session中存入user对象（即用户登陆标记），以实现程序完成自动登陆。
-```
+> 首先，在用户登陆成功后，发送一个名称为user的cookie给客户端，cookie的值为用户名和md5加密后的密码。编写一个AutoLoginFilter，这个filter检查用户是否带有名称为user的cookie，如果有，则调用dao查询cookie的用户名和密码是否和数据库匹配，匹配则向session中存入user对象（即用户登陆标记），以实现程序完成自动登陆。
 
 **5、认证Filter**
 
