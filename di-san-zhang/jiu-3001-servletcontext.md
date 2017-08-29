@@ -18,8 +18,6 @@
 >
 > ​得到对象： 从ServletConfig对象的getServletContext方法得到。
 
-
-
 ## 二、开发中常用场景
 
 ### 1、数据共享
@@ -100,13 +98,16 @@
    1、当资源文件在包下面时
 
    ```
-   InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/classes/cn/werner/context/db.properties");
+   InputStream in = this.getServletContext().
+                         getResourceAsStream("/WEB-INF/classes/cn/werner/context/db.properties");
    ```
+
    2、资源文件在WEB-INF下
 
    ```
    InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/db.properties");
    ```
+
    3、资源文件在web工程中
 
    ```java
