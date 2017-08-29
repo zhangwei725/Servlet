@@ -17,6 +17,7 @@
 * [第四章](di-si-zhang.md)
   * [十一、Servlet多请求合并](di-si-zhang/shi-yi-3001-servlet-duo-qing-qiu-he-bing.md)
   * [十二、过滤与监听](di-si-zhang/shi-er-3001-guo-lv-yu-jian-ting.md)
+  * [十三、Servlet3.0特性](di-si-zhang/shi-san-3001-servlet3-0-te-xing.md)
   * [乱码问题](di-si-zhang/luan-ma-wen-ti.md)
   * [其它](di-si-zhang/qi-ta.md)
   * [XML](di-si-zhang/3001-xml.md)
