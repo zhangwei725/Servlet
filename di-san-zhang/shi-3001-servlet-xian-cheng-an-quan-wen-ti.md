@@ -206,28 +206,25 @@
 
 ### 2.2、详细解释
 
-1. ServletContextListener 监听ServletContext的启动或者销毁
+1. ServletContextListener
+
+   >  监听ServletContext的启动或者销毁
 
 2. contextInitialized(ServletContextEvent sce)
 
-   ```
-           当web应用程序初始化进程正开始时，web容器调用这个方法，该方法将在所有的过滤器和Servlet初始化之前被调用。contextDestroyed(ServletContextEvent sce)当Servlet上下文将要关闭时，Web容器调用这个方法，该方法在所有Servlet和和过滤器销毁之后被调用。
-
-     课堂例子：
-         在Web应用程序启动时初始化DataSource对象，然后将其方法ServletContext中
-     数据库支持更换
-   ```
+   > 当web应用程序初始化进程正开始时，web容器调用这个方法，该方法将在所有的过滤器和Servlet初始化之前被调用。contextDestroyed(ServletContextEvent sce)当Servlet上下文将要关闭时，Web容器调用这个方法，该方法在所有Servlet和和过滤器销毁之后被调用。
+   >
+   >   课堂例子：
+   >
+   >  在Web应用程序启动时初始化DataSource对象，然后将其方法ServletContext中,  数据库支持更换        
 
 3. HttpSessionBindingListener，（无序配置）
 
-   ```
-     如果一个对象实现了HttpSessionBindingListener接口，当这个对象被绑定的Session或者从Session中被删除时，Servlet容器就会通知这个对象。
-   ```
+   >  如果一个对象实现了HttpSessionBindingListener接口，当这个对象被绑定的Session或者从Session中被删除时，Servlet容器就会通知这个对象。
 
    - valueBound(HttpSessionBindingEvent event)
 
-     ```
      当对象正在被绑定到Session中，Servlet容器调用这个方法通知该对象
-     ```
 
    - valueUnBound(HttpSessionBindingEvent event)
+
