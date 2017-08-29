@@ -97,23 +97,21 @@
 
 4. 不同位置的资源文件的读取方式
 
-   1. 当资源文件在包下面时
+   1、当资源文件在包下面时
 
-      ```
-      InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/classes/cn/werner/context/db.properties");
-      ```
+   ```
+   InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/classes/cn/werner/context/db.properties");
+   ```
+   2、资源文件在WEB-INF下
 
-   2. 资源文件在WEB-INF下
+   ```
+   InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/db.properties");
+   ```
+   3、资源文件在web工程中
 
-      ```
-      InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/db.properties");
-      ```
-
-   3. 资源文件在web工程中
-
-      ```java
-      InputStream in = this.getServletContext().getResourceAsStream("/db.properties");
-      ```
+   ```java
+   InputStream in = this.getServletContext().getResourceAsStream("/db.properties");
+   ```
 
 ## 三、其它
 
