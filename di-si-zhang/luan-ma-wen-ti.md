@@ -18,30 +18,30 @@
 > 3. 简写的方式（等于上面的两句）
 >    response.setContentType\("text/html;charset=UTF-8"\);
 
-### 1.3、输入中文乱码
+#### 1.3、输入中文乱码
 
 > str=URLDecoder.decode\("中文","utf8"\)
 
-## 二、请求乱码
+### 2、请求乱码
 
-### 1、get提交方式的乱码处理方式
+#### 1、get提交方式的乱码处理方式
 
-#### 1.1、说明
+##### 1.1、说明
 
 > 如果使用get方式提交中文，接受参数的页面也会出现乱码，这个乱码的原因也是tomcat的内部    编码格式iso8859-1导致。Tomcat会以get的缺省编码方式iso8859-1对汉字进行编码，编码后追加到url，导致接受页面得到的参数为乱码。
 
-#### 1.2、解决办法
+##### 1.2、解决办法
 
 1. 对接受到的字符进行解码，再转码。
 2. Get走的是url提交，而在进入url之前已经进行了iso8859-1的编码处理。要想影响这个编码则需要在server.xml的Connector节点增加useBodyEncodingForURI=”true”属性配置，即可控制tomcat对get方式的汉字编码方式，上面这个属性控制get提交也是用request.setCharacterEncoding \(“UTF-8”\)所设置的编码格式进行编码。所以自动编码为utf-8，接受页面正常接受就可以了。
 
-### 2、使用Post方式提交后接收到的乱码问题
+#### 2、使用Post方式提交后接收到的乱码问题
 
-#### 1、 说明
+##### 2.1、 说明
 
 ​    通过jsp，html，或servlet中的表单元素把参数提交给对应的jsp或者servlet时，在接收的jsp或servlet中接收到的参数中文显示乱码
 
-#### 2、解决办法
+##### 2.2、解决办法
 
 1. 接受参数时进行编码转换 String str = new String\(request.getParameter\(“something”\).getBytes\(“ISO-8859-1”\),”utf-8”\) ； 这样的话，每一个参数都必须这样进行转码。很麻烦。但确实可以拿到汉字。
 
@@ -199,10 +199,12 @@
 
 ## 四、jsp 与 Servlet
 
-### 1 、浏览器显示乱码
+### 4.1 、浏览器显示乱码
 
 ```
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %><html>  
+<%@ page language="java" import="java.util.*" 
+	contentType="text/html; charset=utf-8" %>
+<html>  
     <head>  
     <title>中文显示示例</title>
     </head>   
@@ -219,7 +221,8 @@
 ### 4.2、  生成Servlet乱码
 
 ```
-<%@ page language="java" import="java.util.*"  pageEncoding="utf-8" %>  
+<%@ page language="java" import="java.util.*"  
+pageEncoding="utf-8" %>  
 <html>  
     <head>  
     <title>中文显示示例</title>  
@@ -303,32 +306,32 @@ File -->Setting --> Editor --> File Encodings --> 三个地方全部使用改成
 
 一般地，我们都会在jsp文件的开头加上这样的声明：
 
-```
-<%@ page language="java"pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+> <%@ page language="java"pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+>
+> jsp文件的执行过程如下：
+> （1）jsp编译成.java。它会根据pageEncoding的设定编码格式读取jsp，结果是由指定的编码方案翻译成统一的UTF-8编码的java源码（即.java）。
+> （2）.java编译成.class。将第一步编译的UTF-8编码的java源码编译成UTF-8编码的二进制码（即.class）。
+> （3）Tomcat执行第二步编译好的二进制码，输出结果，并告诉浏览器我是以何种方式编码的（contentType的charset属性）。
+> 应该注意的是，contentType的默认设定为"text/html;charset=ISO-8859-1"，也就是说默认是ISO-8859-1编码格式。
 
-jsp文件的执行过程如下：
-（1）jsp编译成.java。它会根据pageEncoding的设定编码格式读取jsp，结果是由指定的编码方案翻译成统一的UTF-8编码的java源码（即.java）。
-（2）.java编译成.class。将第一步编译的UTF-8编码的java源码编译成UTF-8编码的二进制码（即.class）。
-（3）Tomcat执行第二步编译好的二进制码，输出结果，并告诉浏览器我是以何种方式编码的（contentType的charset属性）。
-应该注意的是，contentType的默认设定为"text/html;charset=ISO-8859-1"，也就是说默认是ISO-8859-1编码格式。
-```
+
 
 ## 八、Tomcat配置文件
 
-​    对于以GET方式发送的请求中包含中文参数的情形，可能经常会出现乱码现象。这是因为Tomcat默认是按ISO-8859-1的方式对URL进行解码，而ISO-8859-1并未包括中文字符，这样的话中文字符肯定就不能被正确解析了。
-
-解决方法：tomcat安装目录 --&gt; conf --&gt; server.xml，设置useBodyEncodingForURI或者URIEncoding属性：
-
-```
-<Connector port="8080"protocol="HTTP/1.1" connectionTimeout="20000" 
-redirectPort="8443"useBodyEncodingForURI="true" 
-URIEncoding="UTF-8" />
-```
-
-注:URIEncoding与useBodyEncodingForURI的区别：
-
-1. URIEncoding的作用是对GET请求中的参数按照设定的方式进行编码，如UTF-8；而        useBodyEncodingForURI="true"的作用是指定请求参数的编码采用请求体的编码方式。
-2. 两个属性选其一进行配置即可。URIEncoding参数的配置具有全局性，它指定对所有GET方式请求进行统一的编解码；而useBodyEncodingForURI具有更大的灵活性，由于不用的页面可以采取不同的编码方式，因而请求参数也就可以随着页面编码方式的变化而变化
+>   对于以GET方式发送的请求中包含中文参数的情形，可能经常会出现乱码现象。这是因为Tomcat默认是按ISO-8859-1的方式对URL进行解码，而ISO-8859-1并未包括中文字符，这样的话中文字符肯定就不能被正确解析了。
+>
+> 解决方法：tomcat安装目录 --&gt; conf --&gt; server.xml，设置useBodyEncodingForURI或者URIEncoding属性：
+>
+> ```
+> <Connector port="8080"protocol="HTTP/1.1" connectionTimeout="20000" 
+> redirectPort="8443"useBodyEncodingForURI="true" 
+> URIEncoding="UTF-8" />
+> ```
+>
+> 注:URIEncoding与useBodyEncodingForURI的区别：
+>
+> 1. URIEncoding的作用是对GET请求中的参数按照设定的方式进行编码，如UTF-8；而        useBodyEncodingForURI="true"的作用是指定请求参数的编码采用请求体的编码方式。
+> 2. 两个属性选其一进行配置即可。URIEncoding参数的配置具有全局性，它指定对所有GET方式请求进行统一的编解码；而useBodyEncodingForURI具有更大的灵活性，由于不用的页面可以采取不同的编码方式，因而请求参数也就可以随着页面编码方式的变化而变化
 
 ## 九、数据库乱码
 
@@ -372,13 +375,9 @@ jdbc:mysql://localhost:3306/database?useUnicode=true&characterEncoding=UTF-8
 
 ## 十、避免乱码注意事项
 
-1.尽量使用统一的编码，如果你是重头开发一个系统，特别是Java开发的，推荐从页面到数据库再到配置文件都使用UTF-8进行编码，安全第一。
-
-2.SetCharacterEncodingFilter的使用，这个东西不是万能的，但是没有它就会很麻烦，如果是基于Servlet开发的东西，能用的就给它用上，省心。不过有一个注意的地方，这个Filter只是对POST请求有效，GET一律忽略，不信你可以debug一下，看看它怎么做的，至于为什么不过滤get请求，好象是它对GET请求是无能为力的。
-
-3.就如上面所说，GET请求有问题，尽量使用POST请求，这个也是Web开发的一个基本要领：
-
-4.JavaScript和Ajax乱码的避免，注意JavaScript默认是ISO8859的编码，避免JS/AJAX乱码和GET一样，不要在URL里面使用中文，实在避免不了，就只能在生成链接的时候转码，绝对不能想当然的认为SetCharacterEncodingFilter会帮你做什么事情。
-
-5.尽早统一开发环境，早点模拟真实环境测试，但凡软件开发都是这么干的，但仍然值得注意。我这出现过一次状况，程序是在Win下编译的，拿去Linux上测试没问题，等实际部署的时候代码是在Linux下编译，结果乱码，秋后算帐总觉得有点晚。
+> 1. 尽量使用统一的编码，如果你是重头开发一个系统，特别是Java开发的，推荐从页面到数据库再到配置文件都使用UTF-8进行编码，安全第一。
+> 2. SetCharacterEncodingFilter的使用，这个东西不是万能的，但是没有它就会很麻烦，如果是基于Servlet开发的东西，能用的就给它用上，省心。不过有一个注意的地方，这个Filter只是对POST请求有效，GET一律忽略，不信你可以debug一下，看看它怎么做的，至于为什么不过滤get请求，好象是它对GET请求是无能为力的。
+> 3. 就如上面所说，GET请求有问题，尽量使用POST请求，这个也是Web开发的一个基本要领：
+> 4. JavaScript和Ajax乱码的避免，注意JavaScript默认是ISO8859的编码，避免JS/AJAX乱码和GET一样，不要在URL里面使用中文，实在避免不了，就只能在生成链接的时候转码，绝对不能想当然的认为SetCharacterEncodingFilter会帮你做什么事情。
+> 5. 尽早统一开发环境，早点模拟真实环境测试，但凡软件开发都是这么干的，但仍然值得注意。我这出现过一次状况，程序是在Win下编译的，拿去Linux上测试没问题，等实际部署的时候代码是在Linux下编译，结果乱码，秋后算帐总觉得有点晚。
 
