@@ -256,24 +256,23 @@ pageEncoding="utf-8" %>
 
 ## 六、数据库中的中文
 
-> 说明 大部分数据库都支持以unicode编码方式，所以解决Java与数据库之间的乱码问题比较明智的方式是直接使用unicode编码与数据库交互。很多数据库驱动自动支持unicode，如Microsoft的SQLServer驱动。其他大部分数据库驱动，可以在驱动的url参数中指定，
->
-> 解决方案
->
-> 数据库相关
->
-> 1. 尽量在数据库安装过程中会选择编码方式，此时选择utf-8格式
-> 2. 创建数据库
+### 1、说明
 
-    在创建数据库的过程中
-    CREATE DATABASE `数据库名` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;创建表
+>  大部分数据库都支持以unicode编码方式，所以解决Java与数据库之间的乱码问题比较明智的方式是直接使用unicode编码与数据库交互。很多数据库驱动自动支持unicode，如Microsoft的SQLServer驱动。其他大部分数据库驱动，可以在驱动的url参数中指定，
 
-```
-在创建表生成的SQL后面加上
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
+### 2、数据库相关
 
-通过jdbc连接时候
+1. 尽量在数据库安装过程中会选择编码方式，此时选择utf-8格式
+
+2. 创建数据库
+
+   > 在创建数据库的过程中
+   > CREATE DATABASE 数据库名 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;创建表
+
+   >在创建表生成的SQL后面加上
+   >ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+### 3、通过jdbc连接时候
 
 1. mysql乱码
 
