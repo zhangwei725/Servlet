@@ -227,4 +227,3 @@
      当对象正在被绑定到Session中，Servlet容器调用这个方法通知该对象
 
    - valueUnBound(HttpSessionBindingEvent event)
-
