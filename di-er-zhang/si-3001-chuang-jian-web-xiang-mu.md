@@ -1,4 +1,4 @@
-# 创建Web项目(Eclipse)
+# 创建Web项目\(Eclipse\)
 
 ## 一、传统的Eclipse创建动态Web项目
 
@@ -30,13 +30,9 @@
 
    ![](http://opzv089nq.bkt.clouddn.com/17-8-27/66523033.jpg)
 
-## 二、创建Maven Web项目(IntelliJ IDEA)
+## 二、创建Maven Web项目\(IntelliJ IDEA\)
 
 1. IDEA配置Maven
-
-   ![](http://opzv089nq.bkt.clouddn.com/17-8-27/56070792.jpg)
-
-   ​
 
 2. 第一步
 
@@ -75,4 +71,6 @@
    ![](http://opzv089nq.bkt.clouddn.com/17-8-27/5962114.jpg)
 
    ![](http://opzv089nq.bkt.clouddn.com/17-8-27/6765812.jpg)
+
+
 
