@@ -87,7 +87,7 @@ HttpSession session = HttpSession getSession(boolean create);
 
    > 默认情况下，session对象在30分钟之后服务器自动销毁。
    >
-   > 手动设置session有效时长   
+   > 手动设置session有效时长  
    > void setMaxInactiveInterval\(int interval\) -以秒为单位
 
 ## 三、cookie
@@ -154,7 +154,7 @@ HttpSession session = HttpSession getSession(boolean create);
    >   3.3&gt; 如果expiry &lt; 0，就指示浏览器不要把Cookie保存到客户端硬盘。Cookie仅仅存在于当前浏览器进程中，当浏览器进程关闭，Cookie也就消失。  
    >   3.4&gt; Cookie默认的有效期为-1。对于来自客户端的Cookie，Servlet可以通过Cookie类的getMaxAge\(\)方法来读取Cookie的有效期
 
-1. 读写客服端Cookie
+2. 读写客服端Cookie
 
    ```
       通过HttpServletRequest对象
@@ -173,7 +173,7 @@ HttpSession session = HttpSession getSession(boolean create);
            }
    ```
 
-2. 修改cookie
+3. 修改cookie
 
    ```java
    Cookie updateCookie = null; 
@@ -191,7 +191,7 @@ HttpSession session = HttpSession getSession(boolean create);
     }
    ```
 
-3. 删除cookie
+4. 删除cookie
 
    ```
    cookie.setMaxAge(0);
