@@ -25,9 +25,9 @@
 
 6. 例如：
 
-    login(HttpServletreRuest req, HttpServletResonse res );   
+   login\(HttpServletreRuest req, HttpServletResonse res \);
 
-   register(HttpServletreRuest req,HttpServletResonse res );  等等 ，
+   register\(HttpServletreRuest req,HttpServletResonse res \);  等等 ，
 
 7. 最后每次请求，只要给请求的servlet带一个 method= login 或者 method=register的参数，就会自动去调用对应的方法，这样就达到了，一个servlet处理多个请求
 
@@ -58,7 +58,7 @@
                throw new RuntimeException(e);  
            }  
        }  
-   }  
+   }
    ```
 
 2. 继承代码
@@ -71,7 +71,7 @@
        public void login(HttpServletRequest request, HttpServletResponse response) {
            //登陆的方法
        }
-   	
+
        public void register(HttpServletRequest request, HttpServletResponse response) {
    //            注册的方法
        }
@@ -91,4 +91,6 @@
            <url-pattern>/account</url-pattern>
        </servlet-mapping>
    ```
+
+
 
