@@ -1,4 +1,4 @@
-## 会话跟踪(重点)
+## 会话跟踪\(重点\)
 
 ## 一、什么是会话跟踪
 
@@ -19,7 +19,7 @@
 
 ### 2、如何在客服端保存有三种方式
 
-1. 通过cookie保存(有可能被用户禁用)
+1. 通过cookie保存\(有可能被用户禁用\)
 2. 隐藏在表单中保存
 3. 重定向保存
 
@@ -39,19 +39,19 @@ HttpSession session = HttpSession getSession(boolean create);
 
 ### 4、常用API
 
-| 返回值            | 方法名                                  | 说明                                       |
-| :------------- | ------------------------------------ | ---------------------------------------- |
-| void           | setAttribute(String name,Object val) | 保存信息                                     |
-| Object         | getAttribute(String name)            | 读取信息                                     |
-| Enumeration    | getAttributeNames()                  | 获取所有session中的name                        |
-| void           | removeAttribute(String name)         | 移除对应的信息                                  |
-| long           | getCreationTime()                    | 获取Session创建的时间                           |
-| String         | getId()                              | 返回分配给Session的唯一标识符                       |
-| long           | getLastAccessedTime()                | 返回客户端最后一次发送与Session相关的请求的时间              |
-| long           | getMaxInactiveInterval()             | getMaxInactiveInterval() 返回以毫秒为单位的最大间隔时间，这个时间是Servlet(容器在客户的两个连续请求之间保持Session打开的最大时间间隔，如果超过这个事件，Servlet容器将使Session失效 |
-| void           | setMaxInactiveInterval(int interval) | setMaxInactiveInterval(int interval) 如果设置一个负值，表示Session永远不会失效 |
-| ServletContext | getServletContext()                  | 返回Session所属的ServletContext对象             |
-| void           | invalidate()                         | invalidate() 使会话失效                       |
+| 返回值 | 方法名 | 说明 |
+| :--- | --- | --- |
+| void | setAttribute\(String name,Object val\) | 保存信息 |
+| Object | getAttribute\(String name\) | 读取信息 |
+| Enumeration | getAttributeNames\(\) | 获取所有session中的name |
+| void | removeAttribute\(String name\) | 移除对应的信息 |
+| long | getCreationTime\(\) | 获取Session创建的时间 |
+| String | getId\(\) | 返回分配给Session的唯一标识符 |
+| long | getLastAccessedTime\(\) | 返回客户端最后一次发送与Session相关的请求的时间 |
+| long | getMaxInactiveInterval\(\) | getMaxInactiveInterval\(\) 返回以毫秒为单位的最大间隔时间，这个时间是Servlet\(容器在客户的两个连续请求之间保持Session打开的最大时间间隔，如果超过这个事件，Servlet容器将使Session失效 |
+| void | setMaxInactiveInterval\(int interval\) | setMaxInactiveInterval\(int interval\) 如果设置一个负值，表示Session永远不会失效 |
+| ServletContext | getServletContext\(\) | 返回Session所属的ServletContext对象 |
+| void | invalidate\(\) | invalidate\(\) 使会话失效 |
 
 ### 5、使用步骤
 
@@ -61,7 +61,7 @@ HttpSession session = HttpSession getSession(boolean create);
    //得到session对象。如果得不到session对象，返回null。主要用于判断是否可以得到session对象的
    HttpSession session = request.getSession()  
    //创建或得到session对象。如果得不到session对象，创建 新的session对象。主要是用于创建session对象的。
-   HttpSession session = request.getSession(boolean create)  
+   HttpSession session = request.getSession(boolean create)
    ```
 
 2. HttpSession作为域对象保存会话数据
@@ -72,7 +72,7 @@ HttpSession session = HttpSession getSession(boolean create);
    //得到数据
    Object getAttribute(java.lang.String name)     
    //清除数据
-   void removeAttribute(java.lang.String name)  
+   void removeAttribute(java.lang.String name)
    ```
 
 ### 6、生命周期
@@ -87,8 +87,8 @@ HttpSession session = HttpSession getSession(boolean create);
 
    > 默认情况下，session对象在30分钟之后服务器自动销毁。
    >
-   > 手动设置session有效时长 
-   > void setMaxInactiveInterval(int interval) -以秒为单位
+   > 手动设置session有效时长   
+   > void setMaxInactiveInterval\(int interval\) -以秒为单位
 
 ## 三、cookie
 
@@ -114,20 +114,20 @@ HttpSession session = HttpSession getSession(boolean create);
 
 ### 3、API列表
 
-| 序号   | 方法 & 描述                                  |
-| ---- | ---------------------------------------- |
-| 1    | **public void setDomain(String pattern)**该方法设置 cookie 适用的域，例如xxx.com。 |
-| 2    | **public String getDomain()**该方法获取 cookie 适用的域，例如 xxx.com。 |
-| 3    | **public void setMaxAge(int expiry)**该方法设置 cookie 过期的时间（以秒为单位）。如果不这样设置，cookie 只会在当前 session 会话中持续有效。 |
-| 4    | **public int getMaxAge()**该方法返回 cookie 的最大生存周期（以秒为单位），默认情况下，-1 表示 cookie 将持续下去，直到浏览器关闭。 |
-| 5    | **public String getName()**该方法返回 cookie 的名称。名称在创建后不能改变。 |
-| 6    | **public void setValue(String newValue)**该方法设置与 cookie 关联的值。 |
-| 7    | **public String getValue()**该方法获取与 cookie 关联的值。 |
-| 8    | **public void setPath(String uri)**该方法设置 cookie 适用的路径。如果您不指定路径，与当前页面相同目录下的（包括子目录下的）所有 URL 都会返回 cookie。 |
-| 9    | **public String getPath()**该方法获取 cookie 适用的路径。 |
-| 10   | **public void setSecure(boolean flag)**该方法设置布尔值，表示 cookie 是否应该只在加密的（即 SSL）连接上发送。 |
-| 11   | **public void setComment(String purpose)**设置cookie的注释。该注释在浏览器向用户呈现 cookie 时非常有用。 |
-| 12   | **public String getComment()**获取 cookie 的注释，如果 cookie 没有注释则返回 null。 |
+| 序号 | 方法 & 描述 |
+| --- | --- |
+| 1 | **public void setDomain\(String pattern\)**该方法设置 cookie 适用的域，例如xxx.com。 |
+| 2 | **public String getDomain\(\)**该方法获取 cookie 适用的域，例如 xxx.com。 |
+| 3 | **public void setMaxAge\(int expiry\)**该方法设置 cookie 过期的时间（以秒为单位）。如果不这样设置，cookie 只会在当前 session 会话中持续有效。 |
+| 4 | **public int getMaxAge\(\)**该方法返回 cookie 的最大生存周期（以秒为单位），默认情况下，-1 表示 cookie 将持续下去，直到浏览器关闭。 |
+| 5 | **public String getName\(\)**该方法返回 cookie 的名称。名称在创建后不能改变。 |
+| 6 | **public void setValue\(String newValue\)**该方法设置与 cookie 关联的值。 |
+| 7 | **public String getValue\(\)**该方法获取与 cookie 关联的值。 |
+| 8 | **public void setPath\(String uri\)**该方法设置 cookie 适用的路径。如果您不指定路径，与当前页面相同目录下的（包括子目录下的）所有 URL 都会返回 cookie。 |
+| 9 | **public String getPath\(\)**该方法获取 cookie 适用的路径。 |
+| 10 | **public void setSecure\(boolean flag\)**该方法设置布尔值，表示 cookie 是否应该只在加密的（即 SSL）连接上发送。 |
+| 11 | **public void setComment\(String purpose\)**设置cookie的注释。该注释在浏览器向用户呈现 cookie 时非常有用。 |
+| 12 | **public String getComment\(\)**获取 cookie 的注释，如果 cookie 没有注释则返回 null。 |
 
 ### 4、使用
 
@@ -155,7 +155,6 @@ HttpSession session = HttpSession getSession(boolean create);
      3.3> 如果expiry < 0，就指示浏览器不要把Cookie保存到客户端硬盘。Cookie仅仅存在于当前浏览器进程中，当浏览器进程关闭，Cookie也就消失。
      3.4> Cookie默认的有效期为-1。对于来自客户端的Cookie，Servlet可以通过Cookie类的getMaxAge()方法来读取Cookie的有效期
    ```
-
 
 1. 读写客服端Cookie
 
