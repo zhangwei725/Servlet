@@ -221,23 +221,20 @@
 
 1. 构造工厂时，指定内存缓冲区大小和临时文件存放位置
 
-   ```
-   public DiskFileItemFactory(int sizeThreshold, File repository) 
-   ```
+   > public DiskFileItemFactory(int sizeThreshold, File repository) 
 
-2. 设置内存缓冲区大小，Apache文件上传组件在解析和处理上传数据中的每个字段内容时，需要临时保存解析出的数据。因为Java虚拟机默认可以使用的内存空间是有限的（测试不大于100M），超出限制时将会发生“java.lang.OutOfMemoryError”错误，如果上传的文件很大，例如上传800M的文件，在内存中将无法保存该文件内容，Apache文件上传组件将用临时文件来保存这些数据；但如果上传的文件很小，例如上传600个字节的文件，显然将其直接保存在内存中更加有效。setSizeThreshold方法用于设置是否使用临时文件保存解析出的数据的那个临界值，该方法传入的参数的单位是字节
+2. 设置内存缓冲区大小
+
+   >Apache文件上传组件在解析和处理上传数据中的每个字段内容时，需要临时保存解析出的数据。因为Java虚拟机默认可以使用的内存空间是有限的（测试不大于100M），超出限制时将会发生“java.lang.OutOfMemoryError”错误，如果上传的文件很大，例如上传800M的文件，在内存中将无法保存该文件内容，Apache文件上传组件将用临时文件来保存这些数据；但如果上传的文件很小，例如上传600个字节的文件，显然将其直接保存在内存中更加有效。setSizeThreshold方法用于设置是否使用临时文件保存解析出的数据的那个临界值，该方法传入的参数的单位是字节
 
 3. 默认10K
 
-   ```
-   public void setSizeThreshold(int sizeThreshold) 
-   ```
+   >public void setSizeThreshold(int sizeThreshold) 
 
-4. 设置临时文件存放位置，如果不设置存放路径，那么临时文件将被储存在"java.io.tmpdir"这个JVM环境属性所指定的目录中，tomcat 将这个属性设置为了'<tomcat安装目录>/temp/'目录
+4. 设置临时文件存放位置
 
-   ```
-   public void setRepository(File repository) 
-   ```
+   >public void setRepository(File repository) 
+   >如果不设置存放路径，那么临时文件将被储存在"java.io.tmpdir"这个JVM环境属性所指定的目录中，tomcat 将这个属性设置为了'<tomcat安装目录>/temp/'目录
 
 5. 说明
 
