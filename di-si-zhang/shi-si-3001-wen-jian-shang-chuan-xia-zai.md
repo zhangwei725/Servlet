@@ -76,21 +76,16 @@
           }
        
           public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-              Part part = request.getPart("file");
-              request.setCharacterEncoding("UTF-8");
-              response.setContentType("text/html;charset=UTF-8");
-              PrintWriter out = response.getWriter();
-              out.println("<html>");
-              out.println("<body>");
-              out.println("此文件的大小：" + part.getSize() + "<br />");
-              out.println("此文件类型：" + part.getContentType() + "<br />");
-              out.println("文本框内容：" + request.getParameter("name") + "<br />");
-              out.println(UploadUtil.getFileName(part) + "<br />");
-              out.println("</body>");
-              out.println("</html>");
+        	
           }
       }
    ```
+
+   ```
+
+   ```
+
+   ​
 
 ### 3、第三方框架 commons-fileupload-1.3.3.jar
 
@@ -224,16 +219,14 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
 
 2. public FileItemIterator getItemIterator(HttpServletRequest request)
 
-   ```
-   getItemIterator方法和parseRequest 方法基本相同。但是getItemIterator方法返回的是一个迭代器，该迭代器中保存的不是FileItem对象，而是FileItemStream 对象，如果你希望进一步提高性能，你可以采用 getItemIterator 方法，直接获得每一个文件项的数据输入流，做底层处理；如果性能不是问题，你希望代码简单，则采用parseRequest方法即可。 
-   ```
+   > getItemIterator方法和parseRequest 方法基本相同。但是getItemIterator方法返回的是一个迭代器，该迭代器中保存的不是FileItem对象，而是FileItemStream 对象，如果你希望进一步提高性能，你可以采用 getItemIterator 方法，直接获得每一个文件项的数据输入流，做底层处理；如果性能不是问题，你希望代码简单，则采用parseRequest方法即可。 
 
 
 1. public stiatc boolean isMultipartContent(HttpServletRequest req)
 
-   ```
-   isMultipartContent方法方法用于判断请求消息中的内容是否是“multipart/form-data”类型，是则返回true，否则返回false。isMultipartContent方法是一个静态方法，不用创建ServletFileUpload类的实例对象即可被调用
-   ```
+   > isMultipartContent方法方法用于判断请求消息中的内容是否是“multipart/form-data”类型，是则返回true，否则返回false。isMultipartContent方法是一个静态方法，不用创建ServletFileUpload类的实例对象即可被调用
+
+   ​
 
 2. getFileItemFactory()和setFileItemFactory(FileItemFactory)
 
@@ -252,7 +245,6 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
 
    ```
    在文件上传请求的消息体中，除了普通表单域的值是文本内容以外，文件上传字段中的文件路径名也是文本，在内存中保存的是它们的某种字符集编码的字节数组，Apache文件上传组件在读取这些内容时，必须知道它们所采用的字符集编码，才能将它们转换成正确的字符文本返回。
-
    setHeaderEncoding方法继承自FileUploadBase类，用于设置上面提到的字符编码。如果没有设置，则对应的读方法getHeaderEncoding()方法返回null，将采用HttpServletRequest设置的字符编码，如果HttpServletRequest的字符编码也为null，则采用系统默认字符编码。可以通过一下语句获得系统默认字符编码：System.getProperty("file.encoding"));
    ```
 
@@ -450,7 +442,7 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
    }
    ```
 
-   2. jsp部分,
+   1. jsp部分,
 
    ```jsp
    <!--只需要一个表单。注意表单必须是post的，而且enctype必须是mulitpart/form-data的 -->
