@@ -20,7 +20,7 @@
 
 #### 2.1、servlet3.0上传文件注意事项：
 
-1. html中' <input type="file">'表示文件上传控件；
+1. html中'<input type="file">'表示文件上传控件；
 
 2. form的 enctype="multipart/form-data"；
 
