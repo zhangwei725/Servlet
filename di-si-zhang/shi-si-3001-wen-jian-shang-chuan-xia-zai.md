@@ -20,7 +20,7 @@
 
 #### 2.1、servlet3.0上传文件注意事项：
 
-1. html中 <input type="file">表示文件上传控件；
+1. html中' <input type="file">'表示文件上传控件；
 
 2. form的 enctype="multipart/form-data"；
 
@@ -264,7 +264,7 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
    public DiskFileItemFactory(int sizeThreshold, File repository) 
    ```
 
-2. 设置内存缓冲区大小，Apache文件上传组件在解析和处理上传数据中的每个字段内容时，需要临时保存解析出的数据。因为[Java](http://lib.csdn.net/base/java)虚拟机默认可以使用的内存空间是有限的（[测试](http://lib.csdn.net/base/softwaretest)不大于100M），超出限制时将会发生“java.lang.OutOfMemoryError”错误，如果上传的文件很大，例如上传800M的文件，在内存中将无法保存该文件内容，Apache文件上传组件将用临时文件来保存这些数据；但如果上传的文件很小，例如上传600个字节的文件，显然将其直接保存在内存中更加有效。setSizeThreshold方法用于设置是否使用临时文件保存解析出的数据的那个临界值，该方法传入的参数的单位是字节
+2. 设置内存缓冲区大小，Apache文件上传组件在解析和处理上传数据中的每个字段内容时，需要临时保存解析出的数据。因为Java虚拟机默认可以使用的内存空间是有限的（测试不大于100M），超出限制时将会发生“java.lang.OutOfMemoryError”错误，如果上传的文件很大，例如上传800M的文件，在内存中将无法保存该文件内容，Apache文件上传组件将用临时文件来保存这些数据；但如果上传的文件很小，例如上传600个字节的文件，显然将其直接保存在内存中更加有效。setSizeThreshold方法用于设置是否使用临时文件保存解析出的数据的那个临界值，该方法传入的参数的单位是字节
 
 3. 默认10K
 
@@ -272,7 +272,7 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
    public void setSizeThreshold(int sizeThreshold) 
    ```
 
-4. 设置临时文件存放位置，如果不设置存放路径，那么临时文件将被储存在"java.io.tmpdir"这个JVM环境属性所指定的目录中，tomcat 将这个属性设置为了“<tomcat安装目录>/temp/”目录
+4. 设置临时文件存放位置，如果不设置存放路径，那么临时文件将被储存在"java.io.tmpdir"这个JVM环境属性所指定的目录中，tomcat 将这个属性设置为了'<tomcat安装目录>/temp/'目录
 
    ```
    public void setRepository(File repository) 
@@ -450,7 +450,7 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
    }
    ```
 
-2. jsp部分,	
+   2. jsp部分,
 
    ```jsp
    <!--只需要一个表单。注意表单必须是post的，而且enctype必须是mulitpart/form-data的 -->
@@ -463,7 +463,7 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
    </form>
    ```
 
-3. 注意细节
+2. 注意细节
 
    1、为保证服务器安全，上传文件应该放在外界无法直接访问的目录下，比如放于WEB-INF目录下。
    2、为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名。
