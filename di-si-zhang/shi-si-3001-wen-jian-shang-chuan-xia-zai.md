@@ -138,7 +138,7 @@
 
        //获取时间戳
        public static  String getTimeStamp(){
-           SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssZ");
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHMMss");
            String timeStamp = sdf.format(new Date());
            return timeStamp;
        }
