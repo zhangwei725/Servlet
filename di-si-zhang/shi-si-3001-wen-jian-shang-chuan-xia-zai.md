@@ -85,7 +85,6 @@
 
    ```
 
-   ​
 
 ### 3、第三方框架 commons-fileupload-1.3.3.jar
 
@@ -99,82 +98,61 @@
    >
    > isFormField方法用于判断FileItem类对象封装的数据是否属于一个普通表单字段，还是属于一个文件表单字段，如果是普通表单字段则返回true，否则返回false。
 
+2. getName方法
 
-1. getName方法
-
-   > public String getName()
+   >public String getName()
    >
-   > getName方法用于获得文件上传字段中的文件名，对于描述头，getName方法返回的结果为字符串 
+   >getName方法用于获得文件上传字段中的文件名，对于描述头，getName方法返回的结果为字符串 
    >
-   > “C:/bg.gif”。如果FileItem类对象对应的是普通表单字段，getName方法将返回null。即使用户没有通过网页
+   >“C:/bg.gif”。如果FileItem类对象对应的是普通表单字段，getName方法将返回null。即使用户没有通过网页
    >
-   > 表单中的文件字段传递任何文件，但只要设置了文件表单字段的name属性，浏览器也会将文件字段的信息传
+   >表单中的文件字段传递任何文件，但只要设置了文件表单字段的name属性，浏览器也会将文件字段的信息传
    >
-   > 递给服务器，只是文件名和文件内容部分都为空，但这个表单字段仍然对应一个FileItem对象，此时，
+   >递给服务器，只是文件名和文件内容部分都为空，但这个表单字段仍然对应一个FileItem对象，此时，
    >
-   > getName方法返回结果为空字符串""，读者在调用Apache文件上传组件时要注意考虑这个情况。
+   >getName方法返回结果为空字符串""，读者在调用Apache文件上传组件时要注意考虑这个情况。
    >
-   > 注意：如果用户使用Windows系统上传文件，浏览器将传递该文件的完整路径，如果用户使用Linux或者
+   >注意：如果用户使用Windows系统上传文件，浏览器将传递该文件的完整路径，如果用户使用Linux或者
    >
-   > Unix系统上传文件，浏览器将只传递该文件的名称部分。
+   >Unix系统上传文件，浏览器将只传递该文件的名称部分。
 
-2.3．getFieldName方法
+3. getFieldName方法
 
-```
-public String getFieldName()
-```
+   >public String getFieldName()
+   >
+   >getFieldName方法用于返回表单字段元素的name属性值，也就是返回name属性值，例如“name=img”中的“img”。
 
-```
-getFieldName方法用于返回表单字段元素的name属性值，也就是返回name属性值，例如“name=img”中的“img”。
-```
+4. write方法
 
-2.4. write方法
-public void write(File file)
+   >public void write(File file)
+   >
+   >write 方法用于将FileItem对象中保存的主体内容保存到某个指定的文件中。如果FileItem对象中的主体内容是保存在某个临时文件中，该方法顺利完成后，临时文件有可能会被清除。该方法也可将普通表单字段内容写入到一个文件中，但它主要用途是将上传的文件内容保存在本地文件系统中。
 
-```
-write 方法用于将FileItem对象中保存的主体内容保存到某个指定的文件中。如果FileItem对象中的主体内容是保存在某个临时文件中，该方法顺利完成后，临时文件有可能会被清除。该方法也可将普通表单字段内容写入到一个文件中，但它主要用途是将上传的文件内容保存在本地文件系统中。
-```
+5. getString方法
 
-2.5．getString方法
 
-public java.lang.String getString()
+   > public java.lang.String getString()
+   >
+   > getString方法用于将FileItem对象中保存的主体内容作为一个字符串返回，它有两个重载的定义形式：前者使用缺省的字符集编码将主体内容转换成字符串，后者使用参数指定的字符集编码将主体内容转换成字符串。如果在读取普通表单字段元素的内容时出现了中文乱码现象，请调用第二个getString方法，并为之传递正确的字符集编码名称。
 
-public java.lang.String getString(String encoding)
+6. getContentType方法
 
-```
-getString方法用于将FileItem对象中保存的主体内容作为一个字符串返回，它有两个重载的定义形式：前者使用缺省的字符集编码将主体内容转换成字符串，后者使用参数指定的字符集编码将主体内容转换成字符串。如果在读取普通表单字段元素的内容时出现了中文乱码现象，请调用第二个getString方法，并为之传递正确的字符集编码名称。
-```
+   >getContentType 方法用于获得上传文件的类型，对于描述头，getContentType方法返回的结果为字符串“image/gif”，即 “Content-Type”字段的值部分。如果FileItem类对象对应的是普通表单字段，该方法将返回null。
 
-2.6. getContentType方法
+7. isInMemory方法
 
-public String getContentType()
+   >public boolean isInMemory()
+   >isInMemory方法用来判断FileItem类对象封装的主体内容是存储在内存中，还是存储在临时文件中，如果存储在内存中则返回true，否则返回false。	
 
-```
-getContentType 方法用于获得上传文件的类型，对于描述头，getContentType方法返回的结果为字符串“image/gif”，即 “Content-Type”字段的值部分。如果FileItem类对象对应的是普通表单字段，该方法将返回null。getContentType 方法的完整语法定义如下：
-```
+8. delete方法
 
-2.7. isInMemory方法
-public boolean isInMemory()
-
-```
-isInMemory方法用来判断FileItem类对象封装的主体内容是存储在内存中，还是存储在临时文件中，如果存储在内存中则返回true，否则返回false。
-```
-
-2.8. delete方法
-public void delete() 
-
-```
-delete方法用来清空FileItem类对象中存放的主体内容，如果主体内容被保存在临时文件中，delete方法将删除该临时文件。尽管 Apache组件使用了多种方式来尽量及时清理临时文件，但系统出现异常时，仍有可能造成有的临时文件被永久保存在了硬盘中。在有些情况下，可以调用这个方法来及时删除临时文件。其完整语法定义如下：
-```
+   >delete方法用来清空FileItem类对象中存放的主体内容，如果主体内容被保存在临时文件中，delete方法将删除该临时文件。尽管 Apache组件使用了多种方式来尽量及时清理临时文件，但系统出现异常时，仍有可能造成有的临时文件被永久保存在了硬盘中。在有些情况下，可以调用这个方法来及时删除临时文件。
 
 ##### 1.2、ServletFileUpload 文件上传核心类
 
-1. 说明
-
-   > 是Apache文件上传组件处理文件上传的核心高级类（所谓高级就是不需要管底层实现，暴露给用户的简单易用的接口）。使用其 parseRequest(HttpServletRequest) 方法可以将通过表单中每一个HTML标签提交的数据封装成一个FileItem对象，然后以List列表的形式返回。使用该方法处理上传文件简单易用。
-   > 如果你希望进一步提高性能，你可以采用 getItemIterator 方法，直接获得每一个文件项的数据输入流，对数据做直接处理。
-   > 在使用ServletFileUpload对象解析请求时需要根据DiskFileItemFactory对象的属性 sizeThreshold（临界值）和repository（临时目录） 来决定将解析得到的数据保存在内存还是临时文件中，如果是临时文件，保存在哪个临时目录中？。所以，我们需要在进行解析工作前构造好DiskFileItemFactory对象，
-
+> 是Apache文件上传组件处理文件上传的核心高级类（所谓高级就是不需要管底层实现，暴露给用户的简单易用的接口）。使用其 parseRequest(HttpServletRequest) 方法可以将通过表单中每一个HTML标签提交的数据封装成一个FileItem对象，然后以List列表的形式返回。使用该方法处理上传文件简单易用。
+> 如果你希望进一步提高性能，你可以采用 getItemIterator 方法，直接获得每一个文件项的数据输入流，对数据做直接处理。
+> 在使用ServletFileUpload对象解析请求时需要根据DiskFileItemFactory对象的属性 sizeThreshold（临界值）和repository（临时目录） 来决定将解析得到的数据保存在内存还是临时文件中，如果是临时文件，保存在哪个临时目录中？。所以，我们需要在进行解析工作前构造好DiskFileItemFactory对象，
 
 1. 构造方法
 
@@ -196,57 +174,48 @@ delete方法用来清空FileItem类对象中存放的主体内容，如果主体
    > 构造一个实例，并根据参数指定的FileItemFactory 对象，设置 fileItemFactory属性
 
 
-1. public void setSizeMax(long sizeMax)
+4. public void setSizeMax(long sizeMax)
 
    > setSizeMax方法继承自FileUploadBase类，用于设置请求消息实体内容（即所有上传数据）的最大尺寸限制，以防止客户端恶意上传超大文件来浪费服务器端的存储空间。其参数是以字节为单位的long型数字。
    >
    > 在请求解析的过程中，如果请求消息体内容的大小超过了setSizeMax方法的设置值，将会抛出FileUploadBase内部定义的SizeLimitExceededException异常(FileUploadException的子类)。
 
-2. public void setFileSizeMax(long fileSizeMax)
+5. public void setFileSizeMax(long fileSizeMax)
 
    > 方法setFileSizeMax方法继承自FileUploadBase类，用于设置单个上传文件的最大尺寸限制，以防止客户端恶意上传超大文件来浪费服务器端的存储空间。其参数是以字节为单位的long型数字。该方法有一个对应的读方法：public long geFileSizeMax()方法。
    >
    > 在请求解析的过程中，如果单个上传文件的大小超过了setFileSizeMax方法的设置值，将会抛出FileUploadBase内部定义的FileSizeLimitExceededException异常(FileUploadException的子类)。
 
 
-1. public List parseRequest(javax.servlet.http.HttpServletRequest req)
+6. public List parseRequest(javax.servlet.http.HttpServletRequest req)
 
-   ```
-   parseRequest 方法是ServletFileUpload类的重要方法，它是对HTTP请求消息体内容进行解析的入口方法。它解析出FORM表单中的每个字段的数据，并将它们分别包装成独立的FileItem对象，然后将这些FileItem对象加入进一个List类型的集合对象中返回。
+   >parseRequest 方法是ServletFileUpload类的重要方法，它是对HTTP请求消息体内容进行解析的入口方法。它解析出FORM表单中的每个字段的数据，并将它们分别包装成独立的FileItem对象，然后将这些FileItem对象加入进一个List类型的集合对象中返回。
+   >
+   >该方法抛出FileUploadException异常来处理诸如文件尺寸过大、请求消息中的实体内容的类型不是“multipart/form-data”、IO异常、请求消息体长度信息丢失等各种异常。每一种异常都是FileUploadException的一个子类型。
 
-   该方法抛出FileUploadException异常来处理诸如文件尺寸过大、请求消息中的实体内容的类型不是“multipart/form-data”、IO异常、请求消息体长度信息丢失等各种异常。每一种异常都是FileUploadException的一个子类型。
-   ```
-
-2. public FileItemIterator getItemIterator(HttpServletRequest request)
+7. public FileItemIterator getItemIterator(HttpServletRequest request)
 
    > getItemIterator方法和parseRequest 方法基本相同。但是getItemIterator方法返回的是一个迭代器，该迭代器中保存的不是FileItem对象，而是FileItemStream 对象，如果你希望进一步提高性能，你可以采用 getItemIterator 方法，直接获得每一个文件项的数据输入流，做底层处理；如果性能不是问题，你希望代码简单，则采用parseRequest方法即可。 
 
 
-1. public stiatc boolean isMultipartContent(HttpServletRequest req)
+8. public stiatc boolean isMultipartContent(HttpServletRequest req)
 
    > isMultipartContent方法方法用于判断请求消息中的内容是否是“multipart/form-data”类型，是则返回true，否则返回false。isMultipartContent方法是一个静态方法，不用创建ServletFileUpload类的实例对象即可被调用
 
-   ​
+9. getFileItemFactory()和setFileItemFactory(FileItemFactory)
 
-2. getFileItemFactory()和setFileItemFactory(FileItemFactory)
+   > 两个方法继承自FileUpload类，用于设置和读取fileItemFactory属性。
 
-   ```
-   两个方法继承自FileUpload类，用于设置和读取fileItemFactory属性。
-   ```
+10. public void setProgressListener(ProgressListener pListener)
 
-3. public void setProgressListener(ProgressListener pListener)
+   >设置文件上传进度监听器。该方法有一个对应的读取方法：ProgressListener getProgressListener()。
 
-   ```
-   设置文件上传进度监听器。该方法有一个对应的读取方法：ProgressListener getProgressListener()。
-   ```
+11. public void setHeaderEncoding()方法
 
+    >在文件上传请求的消息体中，除了普通表单域的值是文本内容以外，文件上传字段中的文件路径名也是文本，在内存中保存的是它们的某种字符集编码的字节数组，Apache文件上传组件在读取这些内容时，必须知道它们所采用的字符集编码，才能将它们转换成正确的字符文本返回。
+    >
+    >setHeaderEncoding方法继承自FileUploadBase类，用于设置上面提到的字符编码。如果没有设置，则对应的读方法getHeaderEncoding()方法返回null，将采用HttpServletRequest设置的字符编码，如果HttpServletRequest的字符编码也为null，则采用系统默认字符编码。可以通过一下语句获得系统默认字符编码：System.getProperty("file.encoding"));
 
-1. public void setHeaderEncoding()方法
-
-   ```
-   在文件上传请求的消息体中，除了普通表单域的值是文本内容以外，文件上传字段中的文件路径名也是文本，在内存中保存的是它们的某种字符集编码的字节数组，Apache文件上传组件在读取这些内容时，必须知道它们所采用的字符集编码，才能将它们转换成正确的字符文本返回。
-   setHeaderEncoding方法继承自FileUploadBase类，用于设置上面提到的字符编码。如果没有设置，则对应的读方法getHeaderEncoding()方法返回null，将采用HttpServletRequest设置的字符编码，如果HttpServletRequest的字符编码也为null，则采用系统默认字符编码。可以通过一下语句获得系统默认字符编码：System.getProperty("file.encoding"));
-   ```
 
 ##### 1.3、**DiskFileItemFactory 磁盘文件项工厂类**
 
