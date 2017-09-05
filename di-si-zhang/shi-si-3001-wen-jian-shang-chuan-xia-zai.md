@@ -74,15 +74,75 @@
           public void init(ServletConfig config) throws ServletException {
               super.init(config);
           }
-       
-          public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        	
-          }
+      @Override
+       protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+           Part part = req.getPart("file");
+           String newImageFileName = FileUtils.getNewImageFileName(part);
+           File imagePath = FileUtils.getImagePath(req.getServletContext());
+           part.write(imagePath + "/" + newImageFileName);
+          //保存到数据库的操作
+           resp.getWriter().write("上传成功");
+       }
       }
    ```
 
    ```
+   public class FileUtils {
+       public static final String IMAGE_PATH = "upload/img";
+       public static final String IMG_FILE_NAME = "IMG_";
 
+       /**
+        * 获取web应用成的跟目录
+        *
+        * @param context
+        * @return
+        */
+       public static String getRootFile(ServletContext context) {
+           return context.getRealPath("/");
+       }
+
+       /**
+        * 获取保存图片的根目录
+        */
+       public static File getImagePath(ServletContext context) {
+           String saveImagePath = getRootFile(context) + IMAGE_PATH;
+           File imageFile = new File(saveImagePath);
+           if (!imageFile.exists()) {
+               imageFile.mkdirs();
+           }
+           return imageFile;
+       }
+
+       /**
+        * 获取上传图片的后缀名
+        * @param part
+        * @return
+        */
+       public static   String getNewImageFileName(Part part) {
+           String fileName = getFileName(part);
+           String fileType = fileName.substring(fileName.indexOf("."));
+           String newFileName = IMG_FILE_NAME + getTimeStamp() + fileType;
+           return  newFileName;
+       }
+       public static String getFileName(Part part) {
+           String fileName = null;
+           String value = part.getHeader("Content-Disposition");
+           String[] values = value.split(";");
+           for (String key : values) {
+               if (key.trim().startsWith("filename")) {
+                   fileName = key.substring(key.indexOf("=") + 2, key.length() - 1);
+               }
+           }
+           return fileName;
+       }
+
+       //获取时间戳
+       public static  String getTimeStamp(){
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssZ");
+           String timeStamp = sdf.format(new Date());
+           return timeStamp;
+       }
+   }
    ```
 
 ### 3、第三方框架 commons-fileupload-1.3.3.jar
